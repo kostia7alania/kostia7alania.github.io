@@ -23,3 +23,8 @@ Cloudflare nameservers must be set at the domain registrar.
 Keep `CNAME`, canonical links, `robots.txt`, sitemap and social metadata aligned
 when changing the domain. The language preference is stored locally in the
 visitor's browser. All main content is available without JavaScript.
+
+Production DNS: `emerie.ns.cloudflare.com` and `gerald.ns.cloudflare.com`.
+The apex and `www` are DNS-only CNAME records pointing to
+`kostia7alania.github.io` (Cloudflare flattens the apex CNAME).
+GitHub Pages issues and renews the HTTPS certificate.

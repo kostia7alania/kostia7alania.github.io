@@ -1,0 +1,49 @@
+name: Enforce Pages HTTPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  pages: write
+
+concurrency:
+  group: pages-https
+  cancel-in-progress: false
+
+jobs:
+  https:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Enable HTTPS once DNS and the certificate are ready
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          endpoint="$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/pages"
+          state=$(curl --fail --silent --show-error \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'Accept: application/vnd.github+json' "$endpoint")
+          if printf '%s' "$state" | python3 -c 'import json,sys; sys.exit(0 if json.load(sys.stdin).get("https_enforced") else 1)'; then
+            echo 'HTTPS is already enforced.'
+            exit 0
+          fi
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent --show-error --head \
+              --connect-timeout 5 --max-time 10 \
+              https://kostia7alania.ru/ >/dev/null 2>&1; then
+              curl --fail --silent --show-error --request PUT \
+                -H "Authorization: Bearer $GH_TOKEN" \
+                -H 'Accept: application/vnd.github+json' \
+                -H 'Content-Type: application/json' \
+                --data '{"https_enforced":true}' "$endpoint" >/dev/null
+              echo 'Valid HTTPS is available and HTTP redirects are enabled.'
+              exit 0
+            fi
+            echo "Waiting for public DNS and the Pages certificate ($attempt/60)."
+            sleep 20
+          done
+          echo 'DNS or certificate issuance is still pending. Rerun this workflow after propagation.' >&2
+          exit 1

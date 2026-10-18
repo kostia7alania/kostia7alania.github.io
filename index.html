@@ -1,86 +1,495 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#f6f5f0">
-  <title>Костя Базров — frontend-разработчик</title>
-  <meta name="description" content="Vue, TypeScript, веб-приложения и автоматизация. Личный сайт Кости Базрова: подход к работе и открытые проекты.">
-  <link rel="canonical" href="https://kostia7alania.ru/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:title" content="Костя Базров — frontend-разработчик">
-  <meta property="og:description" content="Из идеи — в работающий интерфейс. Vue, TypeScript, веб-приложения и автоматизация.">
-  <meta property="og:url" content="https://kostia7alania.ru/">
-  <meta property="og:image" content="https://kostia7alania.ru/social.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="/style.css">
-  <script src="/site.js" defer></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Kostia Bazrov","alternateName":"Костя Базров","jobTitle":"Frontend Developer","url":"https://kostia7alania.ru/","sameAs":["https://github.com/kostia7alania"]}</script>
-</head>
-<body>
-  <a class="skip" href="#main" data-i18n="skip">К содержимому</a>
-  <header class="header wrap">
-    <a class="brand" href="#" aria-label="Костя Базров — на главную"><span class="brand-icon" aria-hidden="true">k<span>·</span>b</span><span class="brand-name">Kostia Bazrov</span></a>
-    <nav aria-label="Основная навигация">
-      <a href="#work" data-i18n="navWork">Проекты</a>
-      <a href="#about" data-i18n="navAbout">Обо мне</a>
-      <button id="language" class="language" type="button" aria-label="Switch to English">EN <span aria-hidden="true">↗</span></button>
-    </nav>
-  </header>
-  <main id="main">
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="tiny-square"></span> FRONTEND DEVELOPER</p>
-        <h1 id="hero-title"><span data-i18n="hello">Привет.</span><br><span data-i18n="iam">Я</span> <em data-i18n="name">Костя.</em></h1>
-        <p class="hero-description" data-i18n="intro">Превращаю идеи в понятные интерфейсы. Работаю с Vue, TypeScript и автоматизацией — от первой версии до запуска.</p>
-        <div class="hero-actions"><a class="button primary" href="#work"><span data-i18n="viewWork">Посмотреть проекты</span><span aria-hidden="true">↘</span></a><a class="text-link" href="https://github.com/kostia7alania" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only" data-i18n="newTab"> — в новой вкладке</span></a></div>
-        <div class="hero-note"><span class="note-line"></span><span data-i18n="heroNote">Меньше лишнего. Больше работающего.</span></div>
-      </div>
-      <div class="workbench" aria-label="От идеи к интерфейсу" data-i18n-aria="artLabel">
-        <div class="bench-top"><span class="bench-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>the making of a good idea</span><span aria-hidden="true">↗</span></div>
-        <div class="bench-canvas" aria-hidden="true">
-          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
-          <span class="canvas-cross cross-one">+</span><span class="canvas-cross cross-two">+</span>
-          <div class="floating-tag tag-vue"><svg viewBox="0 0 24 21"><path d="M0 0h5l7 12L19 0h5L12 21Z" fill="currentColor"/><path d="M5 0h5l2 4 2-4h5l-7 12Z" fill="#153b30"/></svg><span>Vue</span></div>
-          <div class="interface-card">
-            <div class="mini-toolbar"><span class="mini-logo">kb.</span><span class="mini-menu"><i></i><i></i><i></i></span></div>
-            <div class="mini-content"><div class="mini-avatar"><svg viewBox="0 0 36 36"><path d="m13 10-8 8 8 8m10-16 8 8-8 8m-3-20-4 28" fill="none" stroke="currentColor" stroke-width="2.5"/></svg></div><span class="mini-pill">HELLO, WORLD</span><div class="mini-heading">An idea.<br>Made real<span>↗</span></div><div class="mini-lines"><i></i><i></i></div><div class="mini-bottom"><span></span><b>→</b></div></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f6f5f0" />
+    <title>Костя Базров — frontend-разработчик</title>
+    <meta
+      name="description"
+      content="Vue, TypeScript, веб-приложения и автоматизация. Личный сайт Кости Базрова: подход к работе и открытые проекты."
+    />
+    <link rel="canonical" href="https://kostia7alania.ru/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="Костя Базров — frontend-разработчик" />
+    <meta
+      property="og:description"
+      content="Из идеи — в работающий интерфейс. Vue, TypeScript, веб-приложения и автоматизация."
+    />
+    <meta property="og:url" content="https://kostia7alania.ru/" />
+    <meta property="og:image" content="https://kostia7alania.ru/social.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/site.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Kostia Bazrov",
+        "alternateName": "Костя Базров",
+        "jobTitle": "Frontend Developer",
+        "url": "https://kostia7alania.ru/",
+        "sameAs": ["https://github.com/kostia7alania"]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main" data-i18n="skip">К содержимому</a>
+    <header class="header wrap">
+      <a
+        class="brand"
+        href="#"
+        aria-label="Костя Базров — на главную"
+        data-i18n-aria="brandAria"
+        ><span class="brand-icon" aria-hidden="true">k<span>·</span>b</span
+        ><span class="brand-name">Kostia Bazrov</span></a
+      >
+      <nav aria-label="Основная навигация" data-i18n-aria="navAria">
+        <a href="#work" data-i18n="navWork">Проекты</a>
+        <a href="#about" data-i18n="navAbout">Обо мне</a>
+        <button
+          id="language"
+          class="language"
+          type="button"
+          aria-label="Switch to English"
+        >
+          EN <span aria-hidden="true">↗</span>
+        </button>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="tiny-square"></span> FRONTEND DEVELOPER
+          </p>
+          <h1 id="hero-title">
+            <span data-i18n="hello">Привет.</span><br /><span data-i18n="iam"
+              >Я</span
+            >
+            <em data-i18n="name">Костя.</em>
+          </h1>
+          <p class="hero-description" data-i18n="intro">
+            Превращаю идеи в понятные интерфейсы. Работаю с Vue, TypeScript и
+            автоматизацией — от первой версии до запуска.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work"
+              ><span data-i18n="viewWork">Посмотреть проекты</span
+              ><span aria-hidden="true">↘</span></a
+            ><a
+              class="text-link"
+              href="https://github.com/kostia7alania"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub <span aria-hidden="true">↗</span
+              ><span class="sr-only" data-i18n="newTab">
+                — в новой вкладке</span
+              ></a
+            >
           </div>
-          <div class="floating-tag tag-ts"><span class="ts-icon">TS</span><span>TypeScript</span></div>
-          <div class="ship-tag"><span>✓</span><div><b data-i18n="shipTitle">Можно запускать.</b><small data-i18n="shipText">От деталей — к целому.</small></div></div>
+          <div class="hero-note">
+            <span class="note-line"></span
+            ><span data-i18n="heroNote"
+              >Меньше лишнего. Больше работающего.</span
+            >
+          </div>
         </div>
-        <div class="bench-bottom"><span><i></i><span data-i18n="benchStatus">Идея → интерфейс → продукт</span></span><span>01 — ∞</span></div>
+        <div
+          class="workbench"
+          aria-label="От идеи к интерфейсу"
+          data-i18n-aria="artLabel"
+        >
+          <div class="bench-top">
+            <span class="bench-dots" aria-hidden="true"
+              ><i></i><i></i><i></i></span
+            ><span>the making of a good idea</span
+            ><span aria-hidden="true">↗</span>
+          </div>
+          <div class="bench-canvas" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit orbit-three"></div>
+            <span class="canvas-cross cross-one">+</span
+            ><span class="canvas-cross cross-two">+</span>
+            <div class="floating-tag tag-vue">
+              <svg viewBox="0 0 24 21">
+                <path d="M0 0h5l7 12L19 0h5L12 21Z" fill="currentColor" />
+                <path d="M5 0h5l2 4 2-4h5l-7 12Z" fill="#153b30" /></svg
+              ><span>Vue</span>
+            </div>
+            <div class="interface-card">
+              <div class="mini-toolbar">
+                <span class="mini-logo">kb.</span
+                ><span class="mini-menu"><i></i><i></i><i></i></span>
+              </div>
+              <div class="mini-content">
+                <div class="mini-avatar">
+                  <svg viewBox="0 0 36 36">
+                    <path
+                      d="m13 10-8 8 8 8m10-16 8 8-8 8m-3-20-4 28"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                    />
+                  </svg>
+                </div>
+                <span class="mini-pill">HELLO, WORLD</span>
+                <div class="mini-heading">
+                  An idea.<br />Made real<span>↗</span>
+                </div>
+                <div class="mini-lines"><i></i><i></i></div>
+                <div class="mini-bottom"><span></span><b>→</b></div>
+              </div>
+            </div>
+            <div class="floating-tag tag-ts">
+              <span class="ts-icon">TS</span><span>TypeScript</span>
+            </div>
+            <div class="ship-tag">
+              <span>✓</span>
+              <div>
+                <b data-i18n="shipTitle">Можно запускать.</b
+                ><small data-i18n="shipText">От деталей — к целому.</small>
+              </div>
+            </div>
+          </div>
+          <div class="bench-bottom">
+            <span
+              ><i></i
+              ><span data-i18n="benchStatus"
+                >Идея → интерфейс → продукт</span
+              ></span
+            ><span>01 — ∞</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="stack wrap">
+        <span class="stack-label" data-i18n="stackLabel"
+          >МОЙ НАБОР ИНСТРУМЕНТОВ</span
+        >
+        <div class="stack-items">
+          <span>Vue</span><span>TypeScript</span><span>Vite</span
+          ><span>Tailwind</span><span>Vitest</span><span>Playwright</span>
+        </div>
       </div>
-    </section>
 
-    <div class="stack wrap"><span class="stack-label" data-i18n="stackLabel">МОЙ НАБОР ИНСТРУМЕНТОВ</span><div class="stack-items"><span>Vue</span><span>TypeScript</span><span>Vite</span><span>Tailwind</span><span>Vitest</span><span>Playwright</span></div></div>
+      <section id="work" class="work-section wrap" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="workEyebrow">01 / ИЗ МОЕГО GITHUB</p>
+            <h2 id="work-title" data-i18n="workTitle">Есть идея. Есть код.</h2>
+          </div>
+          <p data-i18n="workIntro">
+            Несколько проектов, в которых интерфейс встречается с реальной
+            задачей.
+          </p>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <a
+              class="project-visual cafe"
+              href="https://github.com/kostia7alania/apple-vegan-cafe"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Apple Vegan Cafe — код проекта на GitHub"
+              data-i18n-aria="cafeAria"
+              ><span class="visual-label">A LITTLE MORE GREEN.</span
+              ><svg
+                class="cafe-illustration"
+                viewBox="0 0 300 180"
+                aria-hidden="true"
+              >
+                <ellipse
+                  cx="150"
+                  cy="151"
+                  rx="91"
+                  ry="13"
+                  fill="#264b27"
+                  opacity=".1"
+                />
+                <path d="M77 77c0 50 28 76 73 76s73-26 73-76Z" fill="#f6f2de" />
+                <ellipse cx="150" cy="77" rx="73" ry="24" fill="#d6e3b7" />
+                <path
+                  d="M137 84c-2-33 1-55 31-65 8 29-4 49-31 65Z"
+                  fill="#5f8b48"
+                />
+                <path
+                  d="M142 86c-33-3-57-17-58-47 33-2 54 14 58 47Z"
+                  fill="#83a55d"
+                />
+                <path
+                  d="M143 84c21-28 45-37 71-20-13 28-37 34-71 20Z"
+                  fill="#376644"
+                />
+                <path
+                  d="M102 91c20 20 74 23 99 1"
+                  fill="none"
+                  stroke="#ece7cf"
+                  stroke-width="3"
+                />
+                <circle cx="166" cy="78" r="7" fill="#d8b76b" />
+                <circle cx="120" cy="80" r="7" fill="#c58a65" />
+                <circle cx="149" cy="95" r="6" fill="#d8b76b" /></svg
+              ><span class="visual-footer"
+                ><b>apple vegan</b><span>EN / TH / RU</span></span
+              ><span class="visual-arrow" aria-hidden="true">↗</span></a
+            >
+            <div class="project-info">
+              <div class="project-title">
+                <h3>Apple Vegan Cafe</h3>
+                <span>01</span>
+              </div>
+              <p data-i18n="cafeDesc">
+                Многоязычный сайт веганского кафе в Паттайе. Меню и информация
+                для гостей на трёх языках.
+              </p>
+              <div class="tags">
+                <span>Astro</span
+                ><span data-i18n="multilingual">Мультиязычность</span
+                ><span>Cloudflare</span>
+              </div>
+              <a
+                class="project-link"
+                href="https://github.com/kostia7alania/apple-vegan-cafe"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span data-i18n="source">Код проекта</span
+                ><span aria-hidden="true">↗</span
+                ><span class="sr-only" data-i18n="newTab">
+                  — в новой вкладке</span
+                ></a
+              >
+            </div>
+          </article>
+          <article class="project">
+            <a
+              class="project-visual driving"
+              href="https://github.com/kostia7alania/thai-driving-license"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Thai Driving License — код проекта на GitHub"
+              data-i18n-aria="drivingAria"
+              ><span class="visual-label">FIND YOUR WAY.</span>
+              <div class="license-card" aria-hidden="true">
+                <div class="license-top">
+                  <span>THAILAND</span
+                  ><svg viewBox="0 0 34 20">
+                    <path d="M0 0h34v20H0Z" fill="#cf675e" />
+                    <path d="M0 4h34v12H0Z" fill="#f7f2e9" />
+                    <path d="M0 7h34v6H0Z" fill="#465d84" />
+                  </svg>
+                </div>
+                <div class="license-body">
+                  <div class="license-person">
+                    <svg viewBox="0 0 40 50">
+                      <circle cx="20" cy="15" r="9" />
+                      <path d="M4 47V35c0-16 32-16 32 0v12Z" />
+                    </svg>
+                  </div>
+                  <div class="license-lines">
+                    <b>DRIVING LICENSE</b><i></i><i></i
+                    ><span>READY FOR THE ROAD</span>
+                  </div>
+                </div>
+              </div>
+              <span class="road road-one" aria-hidden="true"></span
+              ><span class="road road-two" aria-hidden="true"></span
+              ><span class="visual-footer"
+                ><b>thai driving</b><span>INDEPENDENT GUIDE</span></span
+              ><span class="visual-arrow" aria-hidden="true">↗</span></a
+            >
+            <div class="project-info">
+              <div class="project-title">
+                <h3>Thai Driving License</h3>
+                <span>02</span>
+              </div>
+              <p data-i18n="drivingDesc">
+                Независимый гид по водительским правам в Таиланде: отделения
+                DLT, инструкции и инструменты для записи.
+              </p>
+              <div class="tags">
+                <span data-i18n="directory">Каталог</span
+                ><span data-i18n="webTools">Веб-инструменты</span
+                ><span>DLT</span>
+              </div>
+              <a
+                class="project-link"
+                href="https://github.com/kostia7alania/thai-driving-license"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span data-i18n="source">Код проекта</span
+                ><span aria-hidden="true">↗</span
+                ><span class="sr-only" data-i18n="newTab">
+                  — в новой вкладке</span
+                ></a
+              >
+            </div>
+          </article>
+          <article class="project">
+            <a
+              class="project-visual murmur"
+              href="https://github.com/kostia7alania/openmurmur"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="OpenMurmur — код проекта на GitHub"
+              data-i18n-aria="murmurAria"
+              ><span class="visual-label">KEEP THE THOUGHT.</span>
+              <div class="audio-wave" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="audio-caption" aria-hidden="true">
+                <span>VOICE</span
+                ><svg viewBox="0 0 50 16">
+                  <path
+                    d="M0 8h44m-6-6 6 6-6 6"
+                    fill="none"
+                    stroke="currentColor"
+                  /></svg
+                ><span>WORDS</span>
+              </div>
+              <span class="visual-footer"
+                ><b>openmurmur</b><span>LOCAL-FIRST AUDIO JOURNAL</span></span
+              ><span class="visual-arrow" aria-hidden="true">↗</span></a
+            >
+            <div class="project-info">
+              <div class="project-title">
+                <h3>OpenMurmur</h3>
+                <span>03</span>
+              </div>
+              <p data-i18n="murmurDesc">
+                Аудиодневник для Apple Silicon: запись речи, распознавание на
+                устройстве и отправка материалов в Telegram.
+              </p>
+              <div class="tags">
+                <span>macOS</span><span>On-device AI</span
+                ><span data-i18n="audio">Аудио</span>
+              </div>
+              <a
+                class="project-link"
+                href="https://github.com/kostia7alania/openmurmur"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span data-i18n="source">Код проекта</span
+                ><span aria-hidden="true">↗</span
+                ><span class="sr-only" data-i18n="newTab">
+                  — в новой вкладке</span
+                ></a
+              >
+            </div>
+          </article>
+        </div>
+        <a
+          class="all-projects"
+          href="https://github.com/kostia7alania?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          ><span data-i18n="allProjects">Остальные проекты и эксперименты</span
+          ><span>GitHub ↗</span></a
+        >
+      </section>
 
-    <section id="work" class="work-section wrap" aria-labelledby="work-title">
-      <div class="section-heading"><div><p class="eyebrow" data-i18n="workEyebrow">01 / ИЗ МОЕГО GITHUB</p><h2 id="work-title" data-i18n="workTitle">Есть идея. Есть код.</h2></div><p data-i18n="workIntro">Несколько проектов, в которых интерфейс встречается с реальной задачей.</p></div>
-      <div class="projects">
-        <article class="project">
-          <a class="project-visual cafe" href="https://github.com/kostia7alania/apple-vegan-cafe" target="_blank" rel="noopener noreferrer" aria-label="Apple Vegan Cafe — код проекта на GitHub" data-i18n-aria="cafeAria"><span class="visual-label">A LITTLE MORE GREEN.</span><svg class="cafe-illustration" viewBox="0 0 300 180" aria-hidden="true"><ellipse cx="150" cy="151" rx="91" ry="13" fill="#264b27" opacity=".1"/><path d="M77 77c0 50 28 76 73 76s73-26 73-76Z" fill="#f6f2de"/><ellipse cx="150" cy="77" rx="73" ry="24" fill="#d6e3b7"/><path d="M137 84c-2-33 1-55 31-65 8 29-4 49-31 65Z" fill="#5f8b48"/><path d="M142 86c-33-3-57-17-58-47 33-2 54 14 58 47Z" fill="#83a55d"/><path d="M143 84c21-28 45-37 71-20-13 28-37 34-71 20Z" fill="#376644"/><path d="M102 91c20 20 74 23 99 1" fill="none" stroke="#ece7cf" stroke-width="3"/><circle cx="166" cy="78" r="7" fill="#d8b76b"/><circle cx="120" cy="80" r="7" fill="#c58a65"/><circle cx="149" cy="95" r="6" fill="#d8b76b"/></svg><span class="visual-footer"><b>apple vegan</b><span>EN / TH / RU</span></span><span class="visual-arrow" aria-hidden="true">↗</span></a>
-          <div class="project-info"><div class="project-title"><h3>Apple Vegan Cafe</h3><span>01</span></div><p data-i18n="cafeDesc">Многоязычный сайт веганского кафе в Паттайе. Меню и информация для гостей на трёх языках.</p><div class="tags"><span>Astro</span><span data-i18n="multilingual">Мультиязычность</span><span>Cloudflare</span></div><a class="project-link" href="https://github.com/kostia7alania/apple-vegan-cafe" target="_blank" rel="noopener noreferrer"><span data-i18n="source">Код проекта</span><span aria-hidden="true">↗</span><span class="sr-only" data-i18n="newTab"> — в новой вкладке</span></a></div>
-        </article>
-        <article class="project">
-          <a class="project-visual driving" href="https://github.com/kostia7alania/thai-driving-license" target="_blank" rel="noopener noreferrer" aria-label="Thai Driving License — код проекта на GitHub" data-i18n-aria="drivingAria"><span class="visual-label">FIND YOUR WAY.</span><div class="license-card" aria-hidden="true"><div class="license-top"><span>THAILAND</span><svg viewBox="0 0 34 20"><path d="M0 0h34v20H0Z" fill="#cf675e"/><path d="M0 4h34v12H0Z" fill="#f7f2e9"/><path d="M0 7h34v6H0Z" fill="#465d84"/></svg></div><div class="license-body"><div class="license-person"><svg viewBox="0 0 40 50"><circle cx="20" cy="15" r="9"/><path d="M4 47V35c0-16 32-16 32 0v12Z"/></svg></div><div class="license-lines"><b>DRIVING LICENSE</b><i></i><i></i><span>READY FOR THE ROAD</span></div></div></div><span class="road road-one" aria-hidden="true"></span><span class="road road-two" aria-hidden="true"></span><span class="visual-footer"><b>thai driving</b><span>INDEPENDENT GUIDE</span></span><span class="visual-arrow" aria-hidden="true">↗</span></a>
-          <div class="project-info"><div class="project-title"><h3>Thai Driving License</h3><span>02</span></div><p data-i18n="drivingDesc">Независимый гид по водительским правам в Таиланде: отделения DLT, инструкции и инструменты для записи.</p><div class="tags"><span data-i18n="directory">Каталог</span><span data-i18n="webTools">Веб-инструменты</span><span>DLT</span></div><a class="project-link" href="https://github.com/kostia7alania/thai-driving-license" target="_blank" rel="noopener noreferrer"><span data-i18n="source">Код проекта</span><span aria-hidden="true">↗</span><span class="sr-only" data-i18n="newTab"> — в новой вкладке</span></a></div>
-        </article>
-        <article class="project">
-          <a class="project-visual murmur" href="https://github.com/kostia7alania/openmurmur" target="_blank" rel="noopener noreferrer" aria-label="OpenMurmur — код проекта на GitHub" data-i18n-aria="murmurAria"><span class="visual-label">KEEP THE THOUGHT.</span><div class="audio-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="audio-caption" aria-hidden="true"><span>VOICE</span><svg viewBox="0 0 50 16"><path d="M0 8h44m-6-6 6 6-6 6" fill="none" stroke="currentColor"/></svg><span>WORDS</span></div><span class="visual-footer"><b>openmurmur</b><span>LOCAL-FIRST AUDIO JOURNAL</span></span><span class="visual-arrow" aria-hidden="true">↗</span></a>
-          <div class="project-info"><div class="project-title"><h3>OpenMurmur</h3><span>03</span></div><p data-i18n="murmurDesc">Аудиодневник для Apple Silicon: запись речи, распознавание на устройстве и отправка материалов в Telegram.</p><div class="tags"><span>macOS</span><span>On-device AI</span><span data-i18n="audio">Аудио</span></div><a class="project-link" href="https://github.com/kostia7alania/openmurmur" target="_blank" rel="noopener noreferrer"><span data-i18n="source">Код проекта</span><span aria-hidden="true">↗</span><span class="sr-only" data-i18n="newTab"> — в новой вкладке</span></a></div>
-        </article>
-      </div>
-      <a class="all-projects" href="https://github.com/kostia7alania?tab=repositories" target="_blank" rel="noopener noreferrer"><span data-i18n="allProjects">Остальные проекты и эксперименты</span><span>GitHub ↗</span></a>
-    </section>
+      <section id="about" class="about-section" aria-labelledby="about-title">
+        <div class="wrap about-grid">
+          <div class="about-heading">
+            <p class="eyebrow" data-i18n="aboutEyebrow">02 / КАК Я РАБОТАЮ</p>
+            <h2 id="about-title">
+              <span data-i18n="aboutTitle1">Не только</span><br /><em
+                data-i18n="aboutTitle2"
+                >пиксели.</em
+              >
+            </h2>
+            <p data-i18n="aboutCopy">
+              Разбираюсь в чужом коде, собираю интерфейсы и автоматизирую
+              повторяющиеся задачи. Люблю, когда сайт быстро загружается, а код
+              можно понять без археологии.
+            </p>
+          </div>
+          <div class="principles">
+            <article>
+              <span>01</span>
+              <div>
+                <h3 data-i18n="p1Title">Сначала — задача</h3>
+                <p data-i18n="p1Copy">
+                  Кому нужен продукт, что мешает сейчас и какой результат
+                  действительно важен.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3 data-i18n="p2Title">Понятная основа</h3>
+                <p data-i18n="p2Copy">
+                  Простая структура, переиспользуемые компоненты и проверки там,
+                  где они приносят пользу.
+                </p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3 data-i18n="p3Title">Довести до запуска</h3>
+                <p data-i18n="p3Copy">
+                  Не ограничиваться красивым экраном: проверить сценарии,
+                  мобильную версию и публикацию.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-    <section id="about" class="about-section" aria-labelledby="about-title"><div class="wrap about-grid"><div class="about-heading"><p class="eyebrow" data-i18n="aboutEyebrow">02 / КАК Я РАБОТАЮ</p><h2 id="about-title"><span data-i18n="aboutTitle1">Не только</span><br><em data-i18n="aboutTitle2">пиксели.</em></h2><p data-i18n="aboutCopy">Разбираюсь в чужом коде, собираю интерфейсы и автоматизирую повторяющиеся задачи. Люблю, когда сайт быстро загружается, а код можно понять без археологии.</p></div><div class="principles"><article><span>01</span><div><h3 data-i18n="p1Title">Сначала — задача</h3><p data-i18n="p1Copy">Кому нужен продукт, что мешает сейчас и какой результат действительно важен.</p></div></article><article><span>02</span><div><h3 data-i18n="p2Title">Понятная основа</h3><p data-i18n="p2Copy">Простая структура, переиспользуемые компоненты и проверки там, где они приносят пользу.</p></div></article><article><span>03</span><div><h3 data-i18n="p3Title">Довести до запуска</h3><p data-i18n="p3Copy">Не ограничиваться красивым экраном: проверить сценарии, мобильную версию и публикацию.</p></div></article></div></div></section>
-
-    <section id="contact" class="contact wrap" aria-labelledby="contact-title"><p class="eyebrow" data-i18n="contactEyebrow">03 / ПРОДОЛЖЕНИЕ — В КОДЕ</p><div class="contact-main"><h2 id="contact-title"><span data-i18n="contactTitle1">Увидимся</span><br><em data-i18n="contactTitle2">на GitHub.</em></h2><div><p data-i18n="contactCopy">Исходники, новые проекты и всё, что не поместилось на одной странице.</p><a class="button primary" href="https://github.com/kostia7alania" target="_blank" rel="noopener noreferrer"><span data-i18n="openProfile">Открыть профиль</span><span aria-hidden="true">↗</span><span class="sr-only" data-i18n="newTab"> — в новой вкладке</span></a></div></div></section>
-  </main>
-  <footer class="footer wrap"><a class="brand" href="#"><span class="brand-icon" aria-hidden="true">k<span>·</span>b</span><span>Kostia Bazrov <span class="copyright">© <span id="year">2026</span></span></span></a><span class="footer-note" data-i18n="footerNote">Сделано без лишнего.</span><a href="#main"><span data-i18n="backTop">Наверх</span> ↑</a></footer>
-</body>
+      <section
+        id="contact"
+        class="contact wrap"
+        aria-labelledby="contact-title"
+      >
+        <p class="eyebrow" data-i18n="contactEyebrow">
+          03 / ПРОДОЛЖЕНИЕ — В КОДЕ
+        </p>
+        <div class="contact-main">
+          <h2 id="contact-title">
+            <span data-i18n="contactTitle1">Увидимся</span><br /><em
+              data-i18n="contactTitle2"
+              >на GitHub.</em
+            >
+          </h2>
+          <div>
+            <p data-i18n="contactCopy">
+              Исходники, новые проекты и всё, что не поместилось на одной
+              странице.
+            </p>
+            <a
+              class="button primary"
+              href="https://github.com/kostia7alania"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><span data-i18n="openProfile">Открыть профиль</span
+              ><span aria-hidden="true">↗</span
+              ><span class="sr-only" data-i18n="newTab">
+                — в новой вкладке</span
+              ></a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer wrap">
+      <a class="brand" href="#"
+        ><span class="brand-icon" aria-hidden="true">k<span>·</span>b</span
+        ><span
+          >Kostia Bazrov
+          <span class="copyright">© <span id="year">2026</span></span></span
+        ></a
+      ><span class="footer-note" data-i18n="footerNote"
+        >Сделано без лишнего.</span
+      ><a href="#main"><span data-i18n="backTop">Наверх</span> ↑</a>
+    </footer>
+  </body>
 </html>

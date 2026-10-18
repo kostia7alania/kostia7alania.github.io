@@ -1,25 +1,160 @@
 (() => {
   const text = {
     ru: {
-      skip:'К содержимому',navWork:'Проекты',navAbout:'Обо мне',hello:'Привет.',iam:'Я',name:'Костя.',intro:'Превращаю идеи в понятные интерфейсы. Работаю с Vue, TypeScript и автоматизацией — от первой версии до запуска.',viewWork:'Посмотреть проекты',newTab:' — в новой вкладке',heroNote:'Меньше лишнего. Больше работающего.',artLabel:'От идеи к интерфейсу',shipTitle:'Можно запускать.',shipText:'От деталей — к целому.',benchStatus:'Идея → интерфейс → продукт',stackLabel:'МОЙ НАБОР ИНСТРУМЕНТОВ',workEyebrow:'01 / ИЗ МОЕГО GITHUB',workTitle:'Есть идея. Есть код.',workIntro:'Несколько проектов, в которых интерфейс встречается с реальной задачей.',cafeDesc:'Многоязычный сайт веганского кафе в Паттайе. Меню и информация для гостей на трёх языках.',multilingual:'Мультиязычность',source:'Код проекта',cafeAria:'Apple Vegan Cafe — код проекта на GitHub',drivingDesc:'Независимый гид по водительским правам в Таиланде: отделения DLT, инструкции и инструменты для записи.',directory:'Каталог',webTools:'Веб-инструменты',drivingAria:'Thai Driving License — код проекта на GitHub',murmurDesc:'Аудиодневник для Apple Silicon: запись речи, распознавание на устройстве и отправка материалов в Telegram.',audio:'Аудио',murmurAria:'OpenMurmur — код проекта на GitHub',allProjects:'Остальные проекты и эксперименты',aboutEyebrow:'02 / КАК Я РАБОТАЮ',aboutTitle1:'Не только',aboutTitle2:'пиксели.',aboutCopy:'Разбираюсь в чужом коде, собираю интерфейсы и автоматизирую повторяющиеся задачи. Люблю, когда сайт быстро загружается, а код можно понять без археологии.',p1Title:'Сначала — задача',p1Copy:'Кому нужен продукт, что мешает сейчас и какой результат действительно важен.',p2Title:'Понятная основа',p2Copy:'Простая структура, переиспользуемые компоненты и проверки там, где они приносят пользу.',p3Title:'Довести до запуска',p3Copy:'Не ограничиваться красивым экраном: проверить сценарии, мобильную версию и публикацию.',contactEyebrow:'03 / ПРОДОЛЖЕНИЕ — В КОДЕ',contactTitle1:'Увидимся',contactTitle2:'на GitHub.',contactCopy:'Исходники, новые проекты и всё, что не поместилось на одной странице.',openProfile:'Открыть профиль',footerNote:'Сделано без лишнего.',backTop:'Наверх',title:'Костя Базров — frontend-разработчик'
+      brandAria: "Костя Базров — на главную",
+      navAria: "Основная навигация",
+      skip: "К содержимому",
+      navWork: "Проекты",
+      navAbout: "Обо мне",
+      hello: "Привет.",
+      iam: "Я",
+      name: "Костя.",
+      intro:
+        "Превращаю идеи в понятные интерфейсы. Работаю с Vue, TypeScript и автоматизацией — от первой версии до запуска.",
+      viewWork: "Посмотреть проекты",
+      newTab: " — в новой вкладке",
+      heroNote: "Меньше лишнего. Больше работающего.",
+      artLabel: "От идеи к интерфейсу",
+      shipTitle: "Можно запускать.",
+      shipText: "От деталей — к целому.",
+      benchStatus: "Идея → интерфейс → продукт",
+      stackLabel: "МОЙ НАБОР ИНСТРУМЕНТОВ",
+      workEyebrow: "01 / ИЗ МОЕГО GITHUB",
+      workTitle: "Есть идея. Есть код.",
+      workIntro:
+        "Несколько проектов, в которых интерфейс встречается с реальной задачей.",
+      cafeDesc:
+        "Многоязычный сайт веганского кафе в Паттайе. Меню и информация для гостей на трёх языках.",
+      multilingual: "Мультиязычность",
+      source: "Код проекта",
+      cafeAria: "Apple Vegan Cafe — код проекта на GitHub",
+      drivingDesc:
+        "Независимый гид по водительским правам в Таиланде: отделения DLT, инструкции и инструменты для записи.",
+      directory: "Каталог",
+      webTools: "Веб-инструменты",
+      drivingAria: "Thai Driving License — код проекта на GitHub",
+      murmurDesc:
+        "Аудиодневник для Apple Silicon: запись речи, распознавание на устройстве и отправка материалов в Telegram.",
+      audio: "Аудио",
+      murmurAria: "OpenMurmur — код проекта на GitHub",
+      allProjects: "Остальные проекты и эксперименты",
+      aboutEyebrow: "02 / КАК Я РАБОТАЮ",
+      aboutTitle1: "Не только",
+      aboutTitle2: "пиксели.",
+      aboutCopy:
+        "Разбираюсь в чужом коде, собираю интерфейсы и автоматизирую повторяющиеся задачи. Люблю, когда сайт быстро загружается, а код можно понять без археологии.",
+      p1Title: "Сначала — задача",
+      p1Copy:
+        "Кому нужен продукт, что мешает сейчас и какой результат действительно важен.",
+      p2Title: "Понятная основа",
+      p2Copy:
+        "Простая структура, переиспользуемые компоненты и проверки там, где они приносят пользу.",
+      p3Title: "Довести до запуска",
+      p3Copy:
+        "Не ограничиваться красивым экраном: проверить сценарии, мобильную версию и публикацию.",
+      contactEyebrow: "03 / ПРОДОЛЖЕНИЕ — В КОДЕ",
+      contactTitle1: "Увидимся",
+      contactTitle2: "на GitHub.",
+      contactCopy:
+        "Исходники, новые проекты и всё, что не поместилось на одной странице.",
+      openProfile: "Открыть профиль",
+      footerNote: "Сделано без лишнего.",
+      backTop: "Наверх",
+      title: "Костя Базров — frontend-разработчик",
     },
     en: {
-      skip:'Skip to content',navWork:'Projects',navAbout:'About',hello:'Hello.',iam:'I’m',name:'Kostia.',intro:'I turn ideas into clear, useful interfaces. Vue, TypeScript and automation — from the first version to launch.',viewWork:'Explore my work',newTab:' — opens in a new tab',heroNote:'Less friction. More things that work.',artLabel:'From an idea to an interface',shipTitle:'Ready to ship.',shipText:'The details make the whole.',benchStatus:'Idea → interface → product',stackLabel:'MY EVERYDAY TOOLKIT',workEyebrow:'01 / FROM MY GITHUB',workTitle:'An idea. Made real.',workIntro:'A few projects where an interface meets a real-world problem.',cafeDesc:'A multilingual website for a vegan cafe in Pattaya. Menu and visitor information in three languages.',multilingual:'Multilingual',source:'View the source',cafeAria:'Apple Vegan Cafe — source code on GitHub',drivingDesc:'An independent guide to Thai driving licences: DLT offices, practical guidance and appointment tools.',directory:'Directory',webTools:'Web tools',drivingAria:'Thai Driving License — source code on GitHub',murmurDesc:'An audio journal for Apple Silicon: speech recording, on-device transcription and delivery to Telegram.',audio:'Audio',murmurAria:'OpenMurmur — source code on GitHub',allProjects:'More projects and experiments',aboutEyebrow:'02 / HOW I WORK',aboutTitle1:'Beyond',aboutTitle2:'the pixels.',aboutCopy:'I work through unfamiliar code, build interfaces and automate repetitive tasks. I like websites that load quickly and code that makes sense without an archaeological dig.',p1Title:'Understand the problem',p1Copy:'Who needs the product, what gets in their way and which outcome actually matters.',p2Title:'Keep the foundation clear',p2Copy:'A simple structure, reusable components and checks where they make a difference.',p3Title:'Take it through to launch',p3Copy:'Go beyond a good-looking screen: check the user journeys, mobile layout and deployment.',contactEyebrow:'03 / KEEP EXPLORING',contactTitle1:'See you',contactTitle2:'on GitHub.',contactCopy:'Source code, new projects and everything that didn’t fit on this page.',openProfile:'Visit my profile',footerNote:'Made without the clutter.',backTop:'Back to top',title:'Kostia Bazrov — frontend developer'
-    }
+      brandAria: "Kostia Bazrov — home",
+      navAria: "Main navigation",
+      skip: "Skip to content",
+      navWork: "Projects",
+      navAbout: "About",
+      hello: "Hello.",
+      iam: "I’m",
+      name: "Kostia.",
+      intro:
+        "I turn ideas into clear, useful interfaces. Vue, TypeScript and automation — from the first version to launch.",
+      viewWork: "Explore my work",
+      newTab: " — opens in a new tab",
+      heroNote: "Less friction. More things that work.",
+      artLabel: "From an idea to an interface",
+      shipTitle: "Ready to ship.",
+      shipText: "The details make the whole.",
+      benchStatus: "Idea → interface → product",
+      stackLabel: "MY EVERYDAY TOOLKIT",
+      workEyebrow: "01 / FROM MY GITHUB",
+      workTitle: "An idea. Made real.",
+      workIntro:
+        "A few projects where an interface meets a real-world problem.",
+      cafeDesc:
+        "A multilingual website for a vegan cafe in Pattaya. Menu and visitor information in three languages.",
+      multilingual: "Multilingual",
+      source: "View the source",
+      cafeAria: "Apple Vegan Cafe — source code on GitHub",
+      drivingDesc:
+        "An independent guide to Thai driving licences: DLT offices, practical guidance and appointment tools.",
+      directory: "Directory",
+      webTools: "Web tools",
+      drivingAria: "Thai Driving License — source code on GitHub",
+      murmurDesc:
+        "An audio journal for Apple Silicon: speech recording, on-device transcription and delivery to Telegram.",
+      audio: "Audio",
+      murmurAria: "OpenMurmur — source code on GitHub",
+      allProjects: "More projects and experiments",
+      aboutEyebrow: "02 / HOW I WORK",
+      aboutTitle1: "Beyond",
+      aboutTitle2: "the pixels.",
+      aboutCopy:
+        "I work through unfamiliar code, build interfaces and automate repetitive tasks. I like websites that load quickly and code that makes sense without an archaeological dig.",
+      p1Title: "Understand the problem",
+      p1Copy:
+        "Who needs the product, what gets in their way and which outcome actually matters.",
+      p2Title: "Keep the foundation clear",
+      p2Copy:
+        "A simple structure, reusable components and checks where they make a difference.",
+      p3Title: "Take it through to launch",
+      p3Copy:
+        "Go beyond a good-looking screen: check the user journeys, mobile layout and deployment.",
+      contactEyebrow: "03 / KEEP EXPLORING",
+      contactTitle1: "See you",
+      contactTitle2: "on GitHub.",
+      contactCopy:
+        "Source code, new projects and everything that didn’t fit on this page.",
+      openProfile: "Visit my profile",
+      footerNote: "Made without the clutter.",
+      backTop: "Back to top",
+      title: "Kostia Bazrov — frontend developer",
+    },
   };
-  const button = document.querySelector('#language');
-  let language = 'ru';
+  const button = document.querySelector("#language");
+  let language = "ru";
   function setLanguage(next) {
     language = next;
     document.documentElement.lang = next;
     document.title = text[next].title;
-    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = text[next][el.dataset.i18n] || el.textContent; });
-    document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', text[next][el.dataset.i18nAria]); });
-    button.innerHTML = `${next === 'ru' ? 'EN' : 'RU'} <span aria-hidden="true">↗</span>`;
-    button.setAttribute('aria-label', next === 'ru' ? 'Switch to English' : 'Переключить на русский');
-    try { localStorage.setItem('kostia-language', next); } catch (_) { /* Language switching also works without storage. */ }
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      el.textContent = text[next][el.dataset.i18n] || el.textContent;
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      el.setAttribute("aria-label", text[next][el.dataset.i18nAria]);
+    });
+    button.innerHTML = `${next === "ru" ? "EN" : "RU"} <span aria-hidden="true">↗</span>`;
+    button.setAttribute(
+      "aria-label",
+      next === "ru" ? "Switch to English" : "Переключить на русский",
+    );
+    try {
+      localStorage.setItem("kostia-language", next);
+    } catch (_) {
+      /* Language switching also works without storage. */
+    }
   }
-  button.addEventListener('click', () => setLanguage(language === 'ru' ? 'en' : 'ru'));
-  try { if (localStorage.getItem('kostia-language') === 'en') setLanguage('en'); } catch (_) { /* The HTML defaults to Russian. */ }
-  document.querySelector('#year').textContent = new Date().getFullYear();
+  button.addEventListener("click", () =>
+    setLanguage(language === "ru" ? "en" : "ru"),
+  );
+  try {
+    if (localStorage.getItem("kostia-language") === "en") setLanguage("en");
+  } catch (_) {
+    /* The HTML defaults to Russian. */
+  }
+  document.querySelector("#year").textContent = new Date().getFullYear();
 })();

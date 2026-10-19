@@ -29,8 +29,6 @@ The apex and `www` are DNS-only CNAME records pointing to
 `kostia7alania.github.io` (Cloudflare flattens the apex CNAME).
 GitHub Pages issues and renews the HTTPS certificate.
 
-`.github/workflows/https.yml` waits for a valid public HTTPS response after a
-push, then enables Pages' HTTP-to-HTTPS redirect using the repository's scoped
-GitHub token. It exits immediately when HTTPS is already enforced. If DNS
-propagation takes longer than its initial wait, rerun **Enforce Pages HTTPS**
-from Actions after the domain resolves. No personal access token is required.
+GitHub Pages enforces HTTPS and redirects `www` to the apex domain.
+Certificate renewal is managed by Pages. The initial certificate setup is complete;
+no separate HTTPS workflow or personal access token is needed.

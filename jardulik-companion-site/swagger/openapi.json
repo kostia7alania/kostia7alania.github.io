@@ -1,0 +1,1068 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Jardulik API · исследовательская документация",
+    "version": "2026-11-09",
+    "description": "Наблюдаемые операции официального Jardulik. Это независимая документация по публичной клиентской сборке и ограниченным штатным запросам собственного аккаунта. Неизвестные поля и серверные правила отмечены явно. Публичная страница служит справочником; выполнение через личный backend-клиент доступно по SSH-туннелю."
+  },
+  "servers": [
+    {
+      "url": "https://api.jardulik.app/api",
+      "description": "Официальный Jardulik API"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Аккаунт"
+    },
+    {
+      "name": "Анкеты"
+    },
+    {
+      "name": "Фото"
+    },
+    {
+      "name": "Реакции"
+    },
+    {
+      "name": "GPT"
+    },
+    {
+      "name": "Тарифы"
+    }
+  ],
+  "paths": {
+    "/user/getMe": {
+      "get": {
+        "tags": [
+          "Аккаунт"
+        ],
+        "summary": "Собственный аккаунт",
+        "operationId": "getOwnAccount",
+        "description": "Проверен штатный запрос собственного ID. Полнота серверной проверки владельца Bearer этим наблюдением не установлена.",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Account"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Запрос не принят. Формат тела ошибки не унифицирован."
+          },
+          "401": {
+            "description": "Сессия не подтверждена."
+          },
+          "403": {
+            "description": "Доступ отклонён."
+          },
+          "429": {
+            "description": "Ограничение запросов. Проверить Retry-After, если он передан."
+          },
+          "404": {
+            "description": "Аккаунт не найден; контроль с некорректным ID вернул 404."
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "ID Jardulik владельца текущей сессии. В личном прокси добавляется автоматически.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          }
+        ]
+      }
+    },
+    "/photos/user/{userId}": {
+      "get": {
+        "tags": [
+          "Фото"
+        ],
+        "summary": "Фотографии собственного аккаунта",
+        "operationId": "getOwnPhotos",
+        "description": "В просмотренной сборке оба вызова этого endpoint используют собственный myId; для чужой карточки используется другая модель.",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Photo"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Запрос не принят. Формат тела ошибки не унифицирован."
+          },
+          "401": {
+            "description": "Сессия не подтверждена."
+          },
+          "403": {
+            "description": "Доступ отклонён."
+          },
+          "429": {
+            "description": "Ограничение запросов. Проверить Retry-After, если он передан."
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "Собственный ID Jardulik. Личный прокси ограничивает его текущей сессией.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          }
+        ]
+      }
+    },
+    "/user/getUser": {
+      "get": {
+        "tags": [
+          "Анкеты"
+        ],
+        "summary": "Доступная анкета",
+        "operationId": "getUser",
+        "description": "Клиент допускает объект или массив ответа. Личный прокси использует текущий viewer и доступную ему анкету.",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PublicProfile"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/PublicProfile"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Запрос не принят. Формат тела ошибки не унифицирован."
+          },
+          "401": {
+            "description": "Сессия не подтверждена."
+          },
+          "403": {
+            "description": "Доступ отклонён."
+          },
+          "429": {
+            "description": "Ограничение запросов. Проверить Retry-After, если он передан."
+          },
+          "204": {
+            "description": "Нет содержимого анкеты."
+          }
+        },
+        "parameters": [
+          {
+            "name": "viewerUserId",
+            "in": "query",
+            "required": true,
+            "description": "ID текущего владельца сессии; личный прокси добавляет автоматически.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "targetUserId",
+            "in": "query",
+            "required": true,
+            "description": "ID целевой анкеты.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          }
+        ]
+      }
+    },
+    "/user/getUsers": {
+      "get": {
+        "tags": [
+          "Анкеты"
+        ],
+        "summary": "Выдача анкет по фильтрам",
+        "operationId": "getUsers",
+        "description": "Пол в штатном query не передаётся. isMan/isMale в просмотренной сборке не найдены; контрольный запрос с isMan=true/false не изменил выдачу. Схема не объявляет эти флаги поддерживаемыми.",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PublicProfile"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Запрос не принят. Формат тела ошибки не унифицирован."
+          },
+          "401": {
+            "description": "Сессия не подтверждена."
+          },
+          "403": {
+            "description": "Доступ отклонён."
+          },
+          "429": {
+            "description": "Ограничение запросов. Проверить Retry-After, если он передан."
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "ID Jardulik владельца текущей сессии. В личном прокси добавляется автоматически.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1,
+              "example": 150
+            }
+          },
+          {
+            "name": "all",
+            "in": "query",
+            "required": false,
+            "description": "Официальный UI начинает с 0 и пробует 1 после пустого ответа. Это не подтверждённый переключатель возврата уже лайкнутых.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "enum": [
+                0,
+                1
+              ],
+              "example": 0
+            }
+          },
+          {
+            "name": "ageMin",
+            "in": "query",
+            "required": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 0,
+              "example": 18
+            }
+          },
+          {
+            "name": "ageMax",
+            "in": "query",
+            "required": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 0,
+              "example": 25
+            }
+          },
+          {
+            "name": "heightMin",
+            "in": "query",
+            "required": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 0,
+              "example": 100
+            }
+          },
+          {
+            "name": "heightMax",
+            "in": "query",
+            "required": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 0,
+              "example": 250
+            }
+          },
+          {
+            "name": "goal",
+            "in": "query",
+            "required": false,
+            "description": "Код цели из справочника.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "children",
+            "in": "query",
+            "required": false,
+            "description": "Код отношения к детям.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "worldview",
+            "in": "query",
+            "required": false,
+            "description": "Код мировоззрения.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "description": "Страна.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "required": false,
+            "description": "Город.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/user/getReactUsers": {
+      "get": {
+        "tags": [
+          "Реакции"
+        ],
+        "summary": "Входящие или взаимные лайки",
+        "operationId": "getReactUsers",
+        "description": "isMutual=true — взаимности; false — входящие. Ответ может содержать частичную карточку и дополнительные контекстные поля.",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PublicProfile"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Запрос не принят. Формат тела ошибки не унифицирован."
+          },
+          "401": {
+            "description": "Сессия не подтверждена."
+          },
+          "403": {
+            "description": "Доступ отклонён."
+          },
+          "429": {
+            "description": "Ограничение запросов. Проверить Retry-After, если он передан."
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "ID Jardulik владельца текущей сессии. В личном прокси добавляется автоматически.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "isMutual",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "required": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "required": false,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1,
+              "example": 1000
+            }
+          }
+        ]
+      }
+    },
+    "/orders/type": {
+      "get": {
+        "tags": [
+          "Тарифы"
+        ],
+        "summary": "Доступные тарифы",
+        "operationId": "getOrderTypes",
+        "description": "Чтение тарифов, не оформление покупки. В разовой выдаче 09.11.2026, 16:11 (пн, UTC+3) у SKU month указан fire=30, у week fire=7. Это параметры SKU, не ежедневная норма или подтверждённый график пополнения.",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderTypes"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Запрос не принят. Формат тела ошибки не унифицирован."
+          },
+          "401": {
+            "description": "Сессия не подтверждена."
+          },
+          "403": {
+            "description": "Доступ отклонён."
+          },
+          "429": {
+            "description": "Ограничение запросов. Проверить Retry-After, если он передан."
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "description": "ID Jardulik владельца текущей сессии. В личном прокси добавляется автоматически.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "description": "Наблюдаемый клиентский вызов использует type=1.",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "enum": [
+                1
+              ],
+              "example": 1
+            }
+          }
+        ]
+      }
+    },
+    "/GPT/checkCompatibility": {
+      "post": {
+        "tags": [
+          "GPT"
+        ],
+        "summary": "Расчёт совместимости",
+        "operationId": "checkCompatibility",
+        "description": "Ручной запрос. Штатный клиент отправляет только fromUserId и targetUserId, ждёт полный ответ и показывает content как Markdown. Настройка модели в просмотренном запросе не найдена. POST может расходовать квоту; автоматический повтор результата не предполагается.",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GPTResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Запрос не принят. Формат тела ошибки не унифицирован."
+          },
+          "401": {
+            "description": "Сессия не подтверждена."
+          },
+          "403": {
+            "description": "Доступ отклонён."
+          },
+          "429": {
+            "description": "Ограничение запросов. Проверить Retry-After, если он передан."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GPTRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reactions/addNew": {
+      "post": {
+        "tags": [
+          "Реакции"
+        ],
+        "summary": "Отправить реакцию",
+        "operationId": "addReaction",
+        "description": "Реальная реакция текущего аккаунта. Личный прокси подставляет собственный fromUserId. Огонь расходует отдельный баланс; точный период его пополнения не установлен. Автоматическая рассылка приветствий этой документацией не включается.",
+        "responses": {
+          "200": {
+            "description": "Успешный ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReactionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Запрос не принят. Формат тела ошибки не унифицирован."
+          },
+          "401": {
+            "description": "Сессия не подтверждена."
+          },
+          "403": {
+            "description": "Доступ отклонён."
+          },
+          "429": {
+            "description": "Ограничение запросов. Проверить Retry-After, если он передан."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReactionRequest"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "PublicProfile": {
+        "type": "object",
+        "description": "Обычная модель getUser/getUsers. Набор полей зависит от ответа; неизвестные поля сохраняются.",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Внутренний ID Jardulik, не Telegram ID.",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Возраст из ответа сервиса.",
+            "minimum": 0
+          },
+          "birthday": {
+            "type": "string",
+            "description": "Строка даты из сервиса; в наблюдаемых ответах без часового пояса."
+          },
+          "height": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Рост, см.",
+            "minimum": 0
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Клиент: 1 — мужчина, 2 — женщина.",
+            "enum": [
+              1,
+              2
+            ]
+          },
+          "country": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "familyNames": {
+            "type": "string"
+          },
+          "profession": {
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "children": {
+            "type": "string"
+          },
+          "worldview": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "languages": {
+            "type": "string"
+          },
+          "distance": {
+            "type": "number"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Тип аккаунта; штатный UI проверяет type=1 для Premium."
+          },
+          "photos": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "miniPhotos": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          }
+        },
+        "additionalProperties": true
+      },
+      "Account": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/PublicProfile"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "surName": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string",
+                "nullable": true
+              },
+              "fileName": {
+                "type": "string"
+              },
+              "miniFileName": {
+                "type": "string"
+              },
+              "fire": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Баланс Огонь. Период и правила пополнения этим числом не установлены.",
+                "minimum": 0
+              },
+              "clean": {
+                "type": "integer",
+                "format": "int64",
+                "description": "Баланс отдельной функции Чистый лист; не баланс обычных лайков.",
+                "minimum": 0
+              },
+              "freezeState": {
+                "type": "boolean",
+                "description": "Состояние заморозки собственной анкеты."
+              },
+              "hideLocation": {
+                "type": "boolean"
+              },
+              "hideSub": {
+                "type": "boolean"
+              },
+              "incoState": {
+                "type": "boolean"
+              },
+              "minAge": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "maxAge": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "likes": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "mutuals": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "orderEndDate": {
+                "type": "string",
+                "nullable": true
+              },
+              "boostEndDate": {
+                "type": "string",
+                "nullable": true
+              },
+              "day": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "month": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "year": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "additionalProperties": true
+          }
+        ],
+        "description": "Расширенная модель собственного getMe. Не объявляет доступ к getMe другого аккаунта."
+      },
+      "Photo": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID записи фотографии.",
+            "minimum": 1
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Владелец фотографии.",
+            "minimum": 1
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "miniFileName": {
+            "type": "string"
+          },
+          "isMain": {
+            "type": "boolean",
+            "description": "Главная фотография: клиент предпочитает эту запись для собственного фото."
+          },
+          "sort": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Порядок фотографии. Клиент использует слоты 0, 1, 2.",
+            "minimum": 0
+          },
+          "moderated": {
+            "type": "boolean",
+            "description": "true соответствует одобренному фото в интерфейсе."
+          },
+          "createDate": {
+            "type": "string",
+            "description": "Поле серверной записи фотографии. Точная семантика и часовой пояс не подтверждены; не считать подтверждённой датой съёмки EXIF."
+          },
+          "matchPercent": {
+            "type": "number",
+            "description": "Число в объекте фотографии. Фронтенд его не читает; семантика и шкала не подтверждены. Не является подтверждённым GPT-рейтингом совместимости."
+          },
+          "user": {
+            "type": "object",
+            "nullable": true,
+            "additionalProperties": true
+          }
+        }
+      },
+      "GPTRequest": {
+        "type": "object",
+        "required": [
+          "fromUserId",
+          "targetUserId"
+        ],
+        "properties": {
+          "fromUserId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID Jardulik владельца текущей сессии. В личном прокси добавляется бэкендом.",
+            "minimum": 1
+          },
+          "targetUserId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID доступной целевой анкеты.",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "GPTResponse": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "description": "Текст Markdown. Возможная оценка в тексте не является отдельным структурированным полем."
+          },
+          "model": {
+            "type": "string",
+            "description": "Имя модели, которое сообщил сервер. В одном проверенном ответе: gpt-4o-mini."
+          }
+        },
+        "additionalProperties": true
+      },
+      "ReactionRequest": {
+        "type": "object",
+        "required": [
+          "reactionType",
+          "isDeleted",
+          "userId",
+          "fromUserId",
+          "message"
+        ],
+        "properties": {
+          "reactionType": {
+            "type": "integer",
+            "format": "int64",
+            "description": "1 Like, 2 Dislike, 3 Super/Огонь, 4 Delete. Значение 0 в клиентском enum отсутствует; серверная семантика не установлена.",
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "example": 1
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "description": "Штатный клиент передаёт true только для Delete (reactionType=4).",
+            "example": false
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID целевой анкеты. Это не ID отправителя.",
+            "minimum": 1
+          },
+          "fromUserId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "ID владельца сессии. В личном прокси добавляется бэкендом.",
+            "minimum": 1
+          },
+          "message": {
+            "type": "string",
+            "description": "Для обычного Like клиент отправляет пустую строку. Для Super требуется непустой текст после trim; UI ограничивает его 500 UTF-16 единицами (эмодзи могут занимать две).",
+            "example": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReactionResponse": {
+        "type": "object",
+        "properties": {
+          "IsSuccess": {
+            "type": "boolean"
+          },
+          "IsMutual": {
+            "type": "boolean"
+          },
+          "IsLast": {
+            "type": "boolean",
+            "description": "В UI проверяется при отказе и обозначает конец анкет, а не остаток Огонь."
+          },
+          "MessageKind": {
+            "type": "integer",
+            "format": "int64",
+            "description": "-1 — квота свайпов; -2 — недоступен Огонь; -3 — нужен Premium. Смысл других значений не объявлен."
+          },
+          "HoursLeft": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Серверное время ожидания при MessageKind=-1.",
+            "minimum": 0
+          },
+          "MinutesLeft": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Серверное время ожидания при MessageKind=-1.",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": true,
+        "description": "Клиент принимает следующие варианты ключей: IsSuccess/Success/success, IsMutual/Mutual/mutual, IsLast/Last/last, MessageKind/Kind/kind, HoursLeft/hoursLeft и MinutesLeft/minutesLeft. Здесь показаны первые ключи из нормализатора; конкретный регистр каждого живого ответа не установлен."
+      },
+      "OrderTypes": {
+        "type": "array",
+        "description": "Разовая выдача 09.11.2026, 16:11 (пн, UTC+3): четыре объекта. month: RUB 700 / STARS 400, fire=30, clean=30, period=1; week: RUB 500 / STARS 300, fire=7, clean=7, period=7. Цены и набор SKU могут измениться.",
+        "items": {
+          "$ref": "#/components/schemas/OrderType"
+        }
+      },
+      "OrderType": {
+        "type": "object",
+        "description": "Наблюдаемый объект тарифа. Полный набор возможных SKU и обязательность полей не установлены.",
+        "properties": {
+          "orderId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "charId": {
+            "type": "string",
+            "description": "В наблюдаемой выдаче: month или week."
+          },
+          "currency": {
+            "type": "string",
+            "description": "В наблюдаемой выдаче: RUB или STARS."
+          },
+          "price": {
+            "type": "number"
+          },
+          "originalPrice": {
+            "type": "number",
+            "nullable": true
+          },
+          "discountPercent": {
+            "type": "number"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "fire": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Параметр SKU. Не устанавливает ежедневную норму или период пополнения баланса."
+          },
+          "period": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Сырое значение сервера: для month наблюдалось 1, для week 7. Универсальная единица измерения не установлена."
+          },
+          "clean": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createDate": {
+            "type": "string",
+            "description": "Серверная строка даты. Часовой пояс не установлен."
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Публичная клиентская сборка, использованная для исследования",
+    "url": "https://mini.jardulik.app/assets/index-BFeBP-cW.js"
+  },
+  "x-evidence": {
+    "client_bundle_sha256": "b8e7b1a5947c75272dcb5da9a882e577396b9650ad0bd4e6a837bd963e217fe1",
+    "verified_date": "2026-11-09",
+    "scope": "Own-account reads, ordinary available profiles, one explicitly requested compatibility calculation. No cross-account authorization bypass is claimed."
+  }
+}

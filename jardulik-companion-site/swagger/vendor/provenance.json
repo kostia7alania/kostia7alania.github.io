@@ -1,0 +1,33 @@
+{
+  "package": "swagger-ui-dist",
+  "version": "5.34.1",
+  "tarball": "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-5.34.1.tgz",
+  "npm_integrity": "sha512-VSr8fXfI93obYaQicLJbLUKGRxDojj/SfRJDDLCioGTUBj4BK/Nj4eE9jCeCAnJxVLi7iS+08PbiZLyrQKBkJQ==",
+  "files": {
+    "swagger-ui-bundle.js": {
+      "sha256": "36eeb4d5640b9c036b1d0f854499af1cceebbdb260b790a03a18be5e8488fbf5",
+      "sha384_sri": "sha384-XFYN47VzPiDY6qPtxYKg0nqUeW/upo20xf1j2SUE7gT/i35FJB4cuS/71Iegzk8Z",
+      "bytes": 1685697
+    },
+    "swagger-ui.css": {
+      "sha256": "c3cfe8248c4b0b89673600fb829924eafbac6de4bc4b2b06f5f5243483074d0a",
+      "sha384_sri": "sha384-4c3vsE5f+trhFyHrFrLM1fFGUn531NIaC7dcqEWIJdoRQJ5CkJbSuSCwXLpaS1KF",
+      "bytes": 187576
+    },
+    "LICENSE": {
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "sha384_sri": "sha384-II9e1ieUDl5AxyiVq3/FflTua1Sr0kMJ25e6imG7rXg7SiAsA2VemsvEqVsLqM7/",
+      "bytes": 11358
+    },
+    "NOTICE": {
+      "sha256": "0d20d1adef18aee3f40dd258172155521ce702ac445cb5f7b7d60ed32dad2fb2",
+      "sha384_sri": "sha384-0WsY5RW2lVusdcWTnoCx5fP8TSnX2JZrr3m82bJxkn2hS3VYTh1Ar/IQSNtZJB3d",
+      "bytes": 55
+    },
+    "swagger-ui-bundle.js.LICENSE.txt": {
+      "sha256": "37eb6e7e59aed57b2c1acf076574b818ea07b74265717e0bd67b59e0baf9abbb",
+      "sha384_sri": "sha384-9K6Bw0izPlkJhBYpUag02GZV9xD+b8m/SSHHt0Ye/VRiuhblAprOAYBo2KnqR/Mh",
+      "bytes": 4606
+    }
+  }
+}

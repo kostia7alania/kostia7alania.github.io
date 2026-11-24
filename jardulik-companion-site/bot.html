@@ -3,7 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; URL=https://kostia7alania.ru/jardulik-companion/bot.html">
+  <script>
+    const isGuide = new URLSearchParams(location.search).get("source") === "guide_connect";
+    location.replace("/jardulik-companion/bot.html" + (isGuide ? "?source=guide_connect" : ""));
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; URL=https://kostia7alania.ru/jardulik-companion/bot.html"></noscript>
   <link rel="canonical" href="https://kostia7alania.ru/jardulik-companion/bot.html">
   <title>Jardulik Companion</title>
 </head>

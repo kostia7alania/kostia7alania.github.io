@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://kostia7alania.ru/sitemap.xml
+Sitemap: https://kostia7alania.ru/jardulik-companion/sitemap.xml

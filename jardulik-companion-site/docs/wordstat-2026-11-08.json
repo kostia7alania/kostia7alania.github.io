@@ -1,0 +1,109 @@
+{
+  "observed_at": "2026-11-08T00:26:54.375339+00:00",
+  "source": "Яндекс Wordstat, авторизованный веб-интерфейс",
+  "report_type": "Топы запросов / Популярные",
+  "period_start": "2026-09-08",
+  "period_end": "2026-10-07",
+  "region": "Все регионы",
+  "devices": [
+    "Десктопы",
+    "Смартфоны",
+    "Планшеты"
+  ],
+  "match_type": "широкое соответствие с формами слов; без операторов",
+  "service_notice": "Некоторые данные могут быть временно недоступны. Показан доступный в интерфейсе период, не ноябрьская статистика.",
+  "results": [
+    {
+      "query": "jardulik",
+      "total_queries": 10,
+      "source_url": "https://wordstat.yandex.ru/?region=all&view=table&words=jardulik",
+      "visible_phrases": [
+        {
+          "phrase": "jardulik",
+          "count": 10
+        }
+      ],
+      "period_start": "2026-09-08",
+      "period_end": "2026-10-07"
+    },
+    {
+      "query": "осетинские знакомства",
+      "total_queries": 92,
+      "source_url": "https://wordstat.yandex.ru/?region=all&view=table&words=%D0%BE%D1%81%D0%B5%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B5%20%D0%B7%D0%BD%D0%B0%D0%BA%D0%BE%D0%BC%D1%81%D1%82%D0%B2%D0%B0",
+      "visible_phrases": [
+        {
+          "phrase": "осетинский сайт знакомств",
+          "count": 12
+        },
+        {
+          "phrase": "осетинское приложение для знакомств",
+          "count": 7
+        }
+      ],
+      "period_start": "2026-09-08",
+      "period_end": "2026-10-07"
+    },
+    {
+      "query": "жардулик",
+      "total_queries": 55,
+      "source_url": "https://wordstat.yandex.ru/?region=all&view=table&words=%D0%B6%D0%B0%D1%80%D0%B4%D1%83%D0%BB%D0%B8%D0%BA",
+      "visible_phrases": [
+        {
+          "phrase": "жардулик",
+          "count": 55
+        },
+        {
+          "phrase": "жардулик приложение",
+          "count": 18
+        }
+      ],
+      "period_start": "2026-09-08",
+      "period_end": "2026-10-07"
+    },
+    {
+      "query": "знакомства осетины",
+      "total_queries": 57,
+      "source_url": "https://wordstat.yandex.ru/?region=all&view=table&words=%D0%B7%D0%BD%D0%B0%D0%BA%D0%BE%D0%BC%D1%81%D1%82%D0%B2%D0%B0%20%D0%BE%D1%81%D0%B5%D1%82%D0%B8%D0%BD%D1%8B",
+      "visible_phrases": [
+        {
+          "phrase": "знакомства с осетинами",
+          "count": 45
+        },
+        {
+          "phrase": "знакомства с успешными осетинами во владикавказе",
+          "count": 14
+        }
+      ],
+      "period_start": "2026-09-08",
+      "period_end": "2026-10-07"
+    },
+    {
+      "query": "архив анкет",
+      "total_queries": 687,
+      "source_url": "https://wordstat.yandex.ru/?region=all&view=table&words=%D0%B0%D1%80%D1%85%D0%B8%D0%B2%20%D0%B0%D0%BD%D0%BA%D0%B5%D1%82",
+      "visible_phrases": [],
+      "selection_note": "У показанных строк нерелевантный продукту intent; не использовать как основной SEO-запрос. Частотности пересекающихся запросов не суммируются.",
+      "period_start": "2026-09-08",
+      "period_end": "2026-10-07"
+    },
+    {
+      "query": "автолайки знакомства",
+      "total_queries": 2,
+      "period_start": "2026-10-07",
+      "period_end": "2026-11-07",
+      "source_url": "https://wordstat.yandex.ru/?region=all&view=table&words=%D0%B0%D0%B2%D1%82%D0%BE%D0%BB%D0%B0%D0%B9%D0%BA%D0%B8%20%D0%B7%D0%BD%D0%B0%D0%BA%D0%BE%D0%BC%D1%81%D1%82%D0%B2%D0%B0",
+      "visible_phrases": [],
+      "ui_note": "Общий счётчик 2, таблица: нет подходящих запросов."
+    },
+    {
+      "query": "jardulik бот",
+      "total_queries": 0,
+      "period_start": "2026-10-07",
+      "period_end": "2026-11-07",
+      "source_url": "https://wordstat.yandex.ru/?region=all&view=table&words=jardulik%20%D0%B1%D0%BE%D1%82",
+      "visible_phrases": [],
+      "ui_note": "Общий счётчик 0 и нет подходящих запросов."
+    }
+  ],
+  "comparison_note": "Интерфейс выдал разные периоды для разных запросов. Период указан у каждой строки; числа разных периодов напрямую не сравнивать."
+}

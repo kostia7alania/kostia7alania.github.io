@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>Letocosmetics | Костя Базров</title>
+    <meta name="description" content="Новая витрина на Astro и Payload с каталогом и карточками товаров на отдельном стенде. Действующий магазин работает на Битриксе.">
+    <link rel="canonical" href="https://kostia7alania.ru/cases/letocosmetics/">
+    <link rel="alternate" hreflang="ru" href="https://kostia7alania.ru/cases/letocosmetics/">
+    <link rel="alternate" hreflang="en" href="https://kostia7alania.ru/en/cases/letocosmetics/">
+    <link rel="alternate" hreflang="x-default" href="https://kostia7alania.ru/cases/letocosmetics/">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="Letocosmetics | Костя Базров">
+    <meta property="og:description" content="Новая витрина на Astro и Payload с каталогом и карточками товаров на отдельном стенде. Действующий магазин работает на Битриксе.">
+    <meta property="og:url" content="https://kostia7alania.ru/cases/letocosmetics/">
+    <meta property="og:image" content="https://kostia7alania.ru/assets/commerce-social.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script>
+(() => {
+  try {
+    const preference = localStorage.getItem("kostia-theme");
+    if (preference === "light" || preference === "dark") {
+      document.documentElement.dataset.theme = preference;
+      document.querySelector('meta[name="color-scheme"]').content = preference;
+    }
+  } catch {
+    // The system theme also works when local storage is unavailable.
+  }
+})();
+    </script>
+    <link rel="stylesheet" href="/style.css?v=53b050a28227">
+    <script src="/site.js?v=81f14a4cb30b" defer></script>
+  </head>
+  <body id="top">
+    <a class="skip" href="#main">К содержимому</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">kb.</span>
+          <span>Костя Базров</span>
+        </a>
+        <nav class="site-nav" aria-label="Навигация">
+          <a href="/#work">Кейсы</a>
+          <a href="/#projects">Проекты</a>
+          <a href="/#about">Обо мне</a>
+        </nav>
+        <div class="header-controls">
+          <a class="language-link" href="/en/cases/letocosmetics/" lang="en" hreflang="en" aria-label="EN (Read in English)">EN</a>
+          <label class="theme-control" data-theme-control hidden>
+            <span aria-hidden="true">◐</span>
+            <select data-theme-select aria-label="Тема сайта">
+              <option value="system">Авто</option>
+              <option value="dark">Тёмная</option>
+              <option value="light">Светлая</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1" class="wrap case-main">
+      <article class="case-story case-story--commerce">
+        <a class="text-link case-back" href="/#work"><span aria-hidden="true">←</span> Все кейсы</a>
+        <header class="case-intro">
+          <p class="case-category">Модернизация магазина</p>
+          <h1>Letocosmetics</h1>
+          <p class="case-summary">Новая витрина на Astro и Payload с каталогом и карточками товаров на отдельном стенде. Действующий магазин работает на Битриксе.</p>
+        </header>
+        <dl class="case-facts">
+          <div><dt>Моя роль</dt><dd>Витрина и подготовка миграции</dd></div>
+          <div><dt>Технологии</dt><dd>Astro, Payload, PostgreSQL, Bitrix</dd></div>
+          <div><dt>Что проверено</dt><dd>Витрина на стенде</dd></div>
+        </dl>
+        <figure class="case-cover">
+          <img src="/assets/commerce.webp" alt="" width="1240" height="827" fetchpriority="high">
+          <figcaption>Иллюстрация к кейсу</figcaption>
+        </figure>
+        <div class="case-flow">
+          <h2>Как это работает</h2>
+          <ol>
+          <li>Сверка с Битриксом</li>
+          <li>Новая витрина</li>
+          <li>Проверка на стенде</li>
+          </ol>
+        </div>
+        <div class="case-narrative">
+          <section><h2>Задача</h2><p>У магазина уже есть каталог, карточки и рабочие ссылки. Изменения витрины нужно проверять отдельно, сохраняя возможность сравнить привычные для покупателя сценарии с новой версией.</p></section>
+          <section><h2>Мой вклад</h2><p>Работал над отдельной витриной на Astro с каталогом, поиском и карточками товаров. Для контента на стенде используется Payload с PostgreSQL. Сверял маршруты с действующим магазином и проверял каталог, поиск и переход в карточку на мобильном.</p></section>
+          <section><h2>Результат</h2><p>Каталог и карточки можно проходить на стенде до решения о переносе магазина. По ссылке ниже открывается действующая витрина на Битриксе.</p></section>
+          <div class="case-links">
+            <a class="button button-secondary" href="https://letocosmetics.ru/">Действующий магазин <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+      <nav class="case-next" aria-label="Следующий кейс">
+        <a href="/cases/apple-vegan-cafe/">
+          <span>Следующий кейс</span>
+          <strong>Apple Vegan Cafe</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+    </main>
+    <footer id="contact" class="site-footer">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <h2>Обсудим задачу</h2>
+            <p>Разработка интерфейсов, модернизация сайтов и автоматизация.</p>
+          </div>
+          <a class="button button-primary" href="https://t.me/Kostatuktuk">Написать в Telegram <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="footer-bottom">
+          <span>© Костя Базров</span>
+          <nav aria-label="Профили и навигация">
+            <a href="https://github.com/kostia7alania">GitHub</a>
+            <a href="https://www.linkedin.com/in/kostia7alania/">LinkedIn</a>
+            <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

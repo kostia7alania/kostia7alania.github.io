@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>Warehouse interfaces | Kostia Bazrov</title>
+    <meta name="description" content="When an operator scans a serial number or IMEI twice, the interface catches the duplicate before a second record is added.">
+    <link rel="canonical" href="https://kostia7alania.ru/en/cases/warehouse-interfaces/">
+    <link rel="alternate" hreflang="ru" href="https://kostia7alania.ru/cases/warehouse-interfaces/">
+    <link rel="alternate" hreflang="en" href="https://kostia7alania.ru/en/cases/warehouse-interfaces/">
+    <link rel="alternate" hreflang="x-default" href="https://kostia7alania.ru/cases/warehouse-interfaces/">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Warehouse interfaces | Kostia Bazrov">
+    <meta property="og:description" content="When an operator scans a serial number or IMEI twice, the interface catches the duplicate before a second record is added.">
+    <meta property="og:url" content="https://kostia7alania.ru/en/cases/warehouse-interfaces/">
+    <meta property="og:image" content="https://kostia7alania.ru/assets/warehouse-social.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script>
+(() => {
+  try {
+    const preference = localStorage.getItem("kostia-theme");
+    if (preference === "light" || preference === "dark") {
+      document.documentElement.dataset.theme = preference;
+      document.querySelector('meta[name="color-scheme"]').content = preference;
+    }
+  } catch {
+    // The system theme also works when local storage is unavailable.
+  }
+})();
+    </script>
+    <link rel="stylesheet" href="/style.css?v=53b050a28227">
+    <script src="/site.js?v=81f14a4cb30b" defer></script>
+  </head>
+  <body id="top">
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/en/">
+          <span class="brand-mark" aria-hidden="true">kb.</span>
+          <span>Kostia Bazrov</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="/en/#work">Case studies</a>
+          <a href="/en/#projects">Projects</a>
+          <a href="/en/#about">About</a>
+        </nav>
+        <div class="header-controls">
+          <a class="language-link" href="/cases/warehouse-interfaces/" lang="ru" hreflang="ru" aria-label="RU (Читать на русском)">RU</a>
+          <label class="theme-control" data-theme-control hidden>
+            <span aria-hidden="true">◐</span>
+            <select data-theme-select aria-label="Color theme">
+              <option value="system">Auto</option>
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1" class="wrap case-main">
+      <article class="case-story case-story--warehouse">
+        <a class="text-link case-back" href="/en/#work"><span aria-hidden="true">←</span> All case studies</a>
+        <header class="case-intro">
+          <p class="case-category">Warehouse receiving</p>
+          <h1>Warehouse interfaces</h1>
+          <p class="case-summary">When an operator scans a serial number or IMEI twice, the interface catches the duplicate before a second record is added.</p>
+        </header>
+        <dl class="case-facts">
+          <div><dt>My role</dt><dd>Frontend engineering</dd></div>
+          <div><dt>Technology</dt><dd>Vue, TypeScript, Vitest</dd></div>
+          <div><dt>Evidence</dt><dd>Component tests</dd></div>
+        </dl>
+        <figure class="case-cover">
+          <img src="/assets/warehouse.webp" alt="" width="1240" height="827" fetchpriority="high">
+          <figcaption>Case study illustration</figcaption>
+        </figure>
+        <div class="case-flow">
+          <h2>How it works</h2>
+          <ol>
+          <li>Scan</li>
+          <li>Check the identifier</li>
+          <li>Move to the next item</li>
+          </ol>
+        </div>
+        <section class="scan-example" aria-labelledby="scan-example-title">
+          <h2 id="scan-example-title">What the operator sees</h2>
+          <p>Example using a sample serial number.</p>
+          <div class="scan-states">
+            <div>
+              <h3>First scan</h3>
+              <code>SN-DEMO-01</code>
+              <p>Item added to the list.</p>
+            </div>
+            <div>
+              <h3>Repeat scan</h3>
+              <code>SN-DEMO-01</code>
+              <p>Duplicate flagged. The list still contains one item.</p>
+            </div>
+          </div>
+        </section>
+        <div class="case-narrative">
+          <section><h2>The problem</h2><p>Warehouse operators scan one item after another. Reading the same code again could add an extra row. Operators need to see quickly whether an entry was accepted and move on.</p></section>
+          <section><h2>My contribution</h2><p>I changed how the frontend handles serial numbers and IMEIs. On a repeat scan, the interface flags the duplicate and keeps a single record in the list. I added component tests for an ordinary scan and a repeat scan of the same code.</p></section>
+          <section><h2>The outcome</h2><p>A repeat scan no longer adds a second row in this flow. The tests protect that behavior as the component evolves.</p></section>
+        </div>
+      </article>
+      <nav class="case-next" aria-label="Next case study">
+        <a href="/en/cases/letocosmetics/">
+          <span>Next case study</span>
+          <strong>Letocosmetics</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+    </main>
+    <footer id="contact" class="site-footer">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <h2>Let’s talk about your project</h2>
+            <p>Frontend development, website modernization and automation.</p>
+          </div>
+          <a class="button button-primary" href="https://t.me/Kostatuktuk">Message on Telegram <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="footer-bottom">
+          <span>© Kostia Bazrov</span>
+          <nav aria-label="Profiles and navigation">
+            <a href="https://github.com/kostia7alania">GitHub</a>
+            <a href="https://www.linkedin.com/in/kostia7alania/">LinkedIn</a>
+            <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

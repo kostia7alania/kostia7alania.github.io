@@ -1,495 +1,487 @@
 <!doctype html>
 <html lang="ru">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#f6f5f0" />
-    <title>Костя Базров — frontend-разработчик</title>
-    <meta
-      name="description"
-      content="Vue, TypeScript, веб-приложения и автоматизация. Личный сайт Кости Базрова: подход к работе и открытые проекты."
-    />
-    <link rel="canonical" href="https://kostia7alania.ru/" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ru_RU" />
-    <meta property="og:title" content="Костя Базров — frontend-разработчик" />
-    <meta
-      property="og:description"
-      content="Из идеи — в работающий интерфейс. Vue, TypeScript, веб-приложения и автоматизация."
-    />
-    <meta property="og:url" content="https://kostia7alania.ru/" />
-    <meta property="og:image" content="https://kostia7alania.ru/social.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="/style.css" />
-    <script src="/site.js" defer></script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Kostia Bazrov",
-        "alternateName": "Костя Базров",
-        "jobTitle": "Frontend Developer",
-        "url": "https://kostia7alania.ru/",
-        "sameAs": ["https://github.com/kostia7alania"]
-      }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>Костя Базров | Frontend Engineer</title>
+    <meta name="description" content="Портфолио Кости Базрова. Кейсы frontend-разработки для складских систем, интернет-магазинов и сервисов с AI.">
+    <link rel="canonical" href="https://kostia7alania.ru/">
+    <link rel="alternate" hreflang="ru" href="https://kostia7alania.ru/">
+    <link rel="alternate" hreflang="en" href="https://kostia7alania.ru/en/">
+    <link rel="alternate" hreflang="x-default" href="https://kostia7alania.ru/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="Костя Базров | Frontend Engineer">
+    <meta property="og:description" content="Портфолио Кости Базрова. Кейсы frontend-разработки для складских систем, интернет-магазинов и сервисов с AI.">
+    <meta property="og:url" content="https://kostia7alania.ru/">
+    <meta property="og:image" content="https://kostia7alania.ru/assets/portfolio-social.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script>
+(() => {
+  try {
+    const preference = localStorage.getItem("kostia-theme");
+    if (preference === "light" || preference === "dark") {
+      document.documentElement.dataset.theme = preference;
+      document.querySelector('meta[name="color-scheme"]').content = preference;
+    }
+  } catch {
+    // The system theme also works when local storage is unavailable.
+  }
+})();
     </script>
+    <link rel="stylesheet" href="/style.css?v=53b050a28227">
+    <script src="/site.js?v=81f14a4cb30b" defer></script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Kostia Bazrov", "alternateName": "Костя Базров", "url": "https://kostia7alania.ru/", "jobTitle": "Frontend Engineer", "sameAs": ["https://github.com/kostia7alania", "https://www.linkedin.com/in/kostia7alania/"]}</script>
   </head>
-  <body>
-    <a class="skip" href="#main" data-i18n="skip">К содержимому</a>
-    <header class="header wrap">
-      <a
-        class="brand"
-        href="#"
-        aria-label="Костя Базров — на главную"
-        data-i18n-aria="brandAria"
-        ><span class="brand-icon" aria-hidden="true">k<span>·</span>b</span
-        ><span class="brand-name">Kostia Bazrov</span></a
-      >
-      <nav aria-label="Основная навигация" data-i18n-aria="navAria">
-        <a href="#work" data-i18n="navWork">Проекты</a>
-        <a href="#about" data-i18n="navAbout">Обо мне</a>
-        <button
-          id="language"
-          class="language"
-          type="button"
-          aria-label="Switch to English"
-        >
-          EN <span aria-hidden="true">↗</span>
-        </button>
-      </nav>
-    </header>
-    <main id="main">
-      <section class="hero wrap" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">
-            <span class="tiny-square"></span> FRONTEND DEVELOPER
-          </p>
-          <h1 id="hero-title">
-            <span data-i18n="hello">Привет.</span><br /><span data-i18n="iam"
-              >Я</span
-            >
-            <em data-i18n="name">Костя.</em>
-          </h1>
-          <p class="hero-description" data-i18n="intro">
-            Превращаю идеи в понятные интерфейсы. Работаю с Vue, TypeScript и
-            автоматизацией — от первой версии до запуска.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#work"
-              ><span data-i18n="viewWork">Посмотреть проекты</span
-              ><span aria-hidden="true">↘</span></a
-            ><a
-              class="text-link"
-              href="https://github.com/kostia7alania"
-              target="_blank"
-              rel="noopener noreferrer"
-              >GitHub <span aria-hidden="true">↗</span
-              ><span class="sr-only" data-i18n="newTab">
-                — в новой вкладке</span
-              ></a
-            >
-          </div>
-          <div class="hero-note">
-            <span class="note-line"></span
-            ><span data-i18n="heroNote"
-              >Меньше лишнего. Больше работающего.</span
-            >
-          </div>
-        </div>
-        <div
-          class="workbench"
-          aria-label="От идеи к интерфейсу"
-          data-i18n-aria="artLabel"
-        >
-          <div class="bench-top">
-            <span class="bench-dots" aria-hidden="true"
-              ><i></i><i></i><i></i></span
-            ><span>the making of a good idea</span
-            ><span aria-hidden="true">↗</span>
-          </div>
-          <div class="bench-canvas" aria-hidden="true">
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-            <div class="orbit orbit-three"></div>
-            <span class="canvas-cross cross-one">+</span
-            ><span class="canvas-cross cross-two">+</span>
-            <div class="floating-tag tag-vue">
-              <svg viewBox="0 0 24 21">
-                <path d="M0 0h5l7 12L19 0h5L12 21Z" fill="currentColor" />
-                <path d="M5 0h5l2 4 2-4h5l-7 12Z" fill="#153b30" /></svg
-              ><span>Vue</span>
-            </div>
-            <div class="interface-card">
-              <div class="mini-toolbar">
-                <span class="mini-logo">kb.</span
-                ><span class="mini-menu"><i></i><i></i><i></i></span>
-              </div>
-              <div class="mini-content">
-                <div class="mini-avatar">
-                  <svg viewBox="0 0 36 36">
-                    <path
-                      d="m13 10-8 8 8 8m10-16 8 8-8 8m-3-20-4 28"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                    />
-                  </svg>
-                </div>
-                <span class="mini-pill">HELLO, WORLD</span>
-                <div class="mini-heading">
-                  An idea.<br />Made real<span>↗</span>
-                </div>
-                <div class="mini-lines"><i></i><i></i></div>
-                <div class="mini-bottom"><span></span><b>→</b></div>
-              </div>
-            </div>
-            <div class="floating-tag tag-ts">
-              <span class="ts-icon">TS</span><span>TypeScript</span>
-            </div>
-            <div class="ship-tag">
-              <span>✓</span>
-              <div>
-                <b data-i18n="shipTitle">Можно запускать.</b
-                ><small data-i18n="shipText">От деталей — к целому.</small>
-              </div>
-            </div>
-          </div>
-          <div class="bench-bottom">
-            <span
-              ><i></i
-              ><span data-i18n="benchStatus"
-                >Идея → интерфейс → продукт</span
-              ></span
-            ><span>01 — ∞</span>
-          </div>
-        </div>
-      </section>
-
-      <div class="stack wrap">
-        <span class="stack-label" data-i18n="stackLabel"
-          >МОЙ НАБОР ИНСТРУМЕНТОВ</span
-        >
-        <div class="stack-items">
-          <span>Vue</span><span>TypeScript</span><span>Vite</span
-          ><span>Tailwind</span><span>Vitest</span><span>Playwright</span>
+  <body id="top">
+    <a class="skip" href="#main">К содержимому</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">kb.</span>
+          <span>Костя Базров</span>
+        </a>
+        <nav class="site-nav" aria-label="Навигация">
+          <a href="/#work">Кейсы</a>
+          <a href="/#projects">Проекты</a>
+          <a href="/#about">Обо мне</a>
+        </nav>
+        <div class="header-controls">
+          <a class="language-link" href="/en/" lang="en" hreflang="en" aria-label="EN (Read in English)">EN</a>
+          <label class="theme-control" data-theme-control hidden>
+            <span aria-hidden="true">◐</span>
+            <select data-theme-select aria-label="Тема сайта">
+              <option value="system">Авто</option>
+              <option value="dark">Тёмная</option>
+              <option value="light">Светлая</option>
+            </select>
+          </label>
         </div>
       </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="hero-role">Frontend Engineer</p>
+          <h1 id="hero-title">Костя<br>Базров</h1>
+          <p class="hero-intro">Разрабатываю интерфейсы для складов, интернет-магазинов и сервисов с AI.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">Смотреть кейсы <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="#contact">Связаться</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="/assets/hero.webp" srcset="/assets/hero-small.webp 640w, /assets/hero.webp 1100w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1280px) 50vw, 640px" alt="" width="1100" height="825" fetchpriority="high">
+        </div>
+      </section>
 
-      <section id="work" class="work-section wrap" aria-labelledby="work-title">
+      <section class="wrap section" id="work" aria-labelledby="work-title">
         <div class="section-heading">
-          <div>
-            <p class="eyebrow" data-i18n="workEyebrow">01 / ИЗ МОЕГО GITHUB</p>
-            <h2 id="work-title" data-i18n="workTitle">Есть идея. Есть код.</h2>
-          </div>
-          <p data-i18n="workIntro">
-            Несколько проектов, в которых интерфейс встречается с реальной
-            задачей.
-          </p>
+          <h2 id="work-title">Избранные кейсы</h2>
+          <p>Какие задачи решал и что получилось.</p>
         </div>
-        <div class="projects">
-          <article class="project">
-            <a
-              class="project-visual cafe"
-              href="https://github.com/kostia7alania/apple-vegan-cafe"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Apple Vegan Cafe — код проекта на GitHub"
-              data-i18n-aria="cafeAria"
-              ><span class="visual-label">A LITTLE MORE GREEN.</span
-              ><svg
-                class="cafe-illustration"
-                viewBox="0 0 300 180"
-                aria-hidden="true"
-              >
-                <ellipse
-                  cx="150"
-                  cy="151"
-                  rx="91"
-                  ry="13"
-                  fill="#264b27"
-                  opacity=".1"
-                />
-                <path d="M77 77c0 50 28 76 73 76s73-26 73-76Z" fill="#f6f2de" />
-                <ellipse cx="150" cy="77" rx="73" ry="24" fill="#d6e3b7" />
-                <path
-                  d="M137 84c-2-33 1-55 31-65 8 29-4 49-31 65Z"
-                  fill="#5f8b48"
-                />
-                <path
-                  d="M142 86c-33-3-57-17-58-47 33-2 54 14 58 47Z"
-                  fill="#83a55d"
-                />
-                <path
-                  d="M143 84c21-28 45-37 71-20-13 28-37 34-71 20Z"
-                  fill="#376644"
-                />
-                <path
-                  d="M102 91c20 20 74 23 99 1"
-                  fill="none"
-                  stroke="#ece7cf"
-                  stroke-width="3"
-                />
-                <circle cx="166" cy="78" r="7" fill="#d8b76b" />
-                <circle cx="120" cy="80" r="7" fill="#c58a65" />
-                <circle cx="149" cy="95" r="6" fill="#d8b76b" /></svg
-              ><span class="visual-footer"
-                ><b>apple vegan</b><span>EN / TH / RU</span></span
-              ><span class="visual-arrow" aria-hidden="true">↗</span></a
-            >
-            <div class="project-info">
-              <div class="project-title">
+        <div class="case-grid">
+          <article class="case-card case-card--warehouse">
+            <div class="case-media">
+              <img src="/assets/warehouse-small.webp" srcset="/assets/warehouse-small.webp 720w, /assets/warehouse.webp 1240w" sizes="auto, (max-width: 760px) calc(100vw - 40px), 52vw" alt="" width="1240" height="827" loading="lazy" decoding="async">
+            </div>
+            <div class="case-card-copy">
+              <p class="case-category">Приёмка в WMS</p>
+              <h3>Складские интерфейсы</h3>
+              <p>При повторном сканировании серийного номера или IMEI интерфейс обрабатывает дубль до добавления записи.</p>
+              <a class="case-cta" href="/cases/warehouse-interfaces/" aria-label="Смотреть кейс Складские интерфейсы">Смотреть кейс <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="case-card case-card--commerce">
+            <div class="case-media">
+              <img src="/assets/commerce-small.webp" srcset="/assets/commerce-small.webp 720w, /assets/commerce.webp 1240w" sizes="auto, (max-width: 760px) calc(100vw - 40px), 52vw" alt="" width="1240" height="827" loading="lazy" decoding="async">
+            </div>
+            <div class="case-card-copy">
+              <p class="case-category">Модернизация магазина</p>
+              <h3>Letocosmetics</h3>
+              <p>Новая витрина на Astro и Payload с каталогом и карточками товаров на отдельном стенде. Действующий магазин работает на Битриксе.</p>
+              <a class="case-cta" href="/cases/letocosmetics/" aria-label="Смотреть кейс Letocosmetics">Смотреть кейс <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="case-card case-card--cafe">
+            <div class="case-media">
+              <img src="/assets/cafe-small.webp" srcset="/assets/cafe-small.webp 720w, /assets/cafe.webp 1240w" sizes="auto, (max-width: 760px) calc(100vw - 40px), 52vw" alt="" width="1240" height="827" loading="lazy" decoding="async">
+            </div>
+            <div class="case-card-copy">
+              <p class="case-category">Многоязычный сайт</p>
+              <h3>Apple Vegan Cafe</h3>
+              <p>Меню, часы работы и контакты семейного кафе в Паттайе на английском, тайском и русском.</p>
+              <a class="case-cta" href="/cases/apple-vegan-cafe/" aria-label="Смотреть кейс Apple Vegan Cafe">Смотреть кейс <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="wrap section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <h2 id="projects-title">Проекты</h2>
+          <a class="text-link" href="https://github.com/kostia7alania?tab=repositories">Все репозитории на GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="project-toolbar" data-project-toolbar hidden>
+          <div class="project-filters" role="group" aria-label="Фильтр проектов">
+          <button type="button" data-filter="all" aria-pressed="true" aria-controls="project-list">Все</button>
+          <button type="button" data-filter="work" aria-pressed="false" aria-controls="project-list">Коммерческие</button>
+          <button type="button" data-filter="product" aria-pressed="false" aria-controls="project-list">Продукты</button>
+          <button type="button" data-filter="tool" aria-pressed="false" aria-controls="project-list">Инструменты</button>
+          <button type="button" data-filter="lab" aria-pressed="false" aria-controls="project-list">Эксперименты</button>
+          </div>
+          <p class="project-count" data-project-count role="status"></p>
+        </div>
+        <ul class="project-list" id="project-list" role="list">
+          <li data-project="work">
+            <a class="project-row" href="/cases/warehouse-interfaces/">
+              <div class="project-copy">
+                <h3>Складские интерфейсы</h3>
+                <p>При повторном сканировании серийного номера или IMEI интерфейс обрабатывает дубль до добавления записи.</p>
+              </div>
+              <span class="project-stack">Vue / TypeScript</span>
+              <span class="project-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li data-project="work">
+            <a class="project-row" href="/cases/letocosmetics/">
+              <div class="project-copy">
+                <h3>Letocosmetics</h3>
+                <p>Новая витрина на Astro и Payload с каталогом и карточками товаров на отдельном стенде. Действующий магазин работает на Битриксе.</p>
+              </div>
+              <span class="project-stack">Astro / Payload</span>
+              <span class="project-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li data-project="work">
+            <div class="project-row">
+              <div class="project-copy">
+                <h3>Логистическая ERP</h3>
+                <p>Обновление двух логистических приложений с Vue 2 до Vue 3 и переход на Vite.</p>
+              </div>
+              <span class="project-stack">Vue / Vite / TypeScript</span>
+            </div>
+          </li>
+          <li data-project="work">
+            <div class="project-row">
+              <div class="project-copy">
+                <h3>Библиотека компонентов</h3>
+                <p>Общие компоненты и каталог Storybook для продукта и административного интерфейса.</p>
+              </div>
+              <span class="project-stack">Vue / Storybook</span>
+            </div>
+          </li>
+          <li data-project="work">
+            <div class="project-row">
+              <div class="project-copy">
+                <h3>Интерфейсы аналитики</h3>
+                <p>Интерфейсы с обновлением данных в реальном времени и графиками ECharts.</p>
+              </div>
+              <span class="project-stack">Vue / WebSockets / ECharts</span>
+            </div>
+          </li>
+          <li data-project="work">
+            <div class="project-row">
+              <div class="project-copy">
+                <h3>Портовые информационные системы</h3>
+                <p>В команде развивал интерфейсы для отчётности и работы с документами.</p>
+              </div>
+              <span class="project-stack">Vue / Laravel / T-SQL</span>
+            </div>
+          </li>
+          <li data-project="work">
+            <div class="project-row">
+              <div class="project-copy">
+                <h3>Инвестиционные интерфейсы</h3>
+                <p>Интерфейсы на Nuxt с серверным рендерингом, offline-сценариями и API-интеграциями.</p>
+              </div>
+              <span class="project-stack">Nuxt / PWA / GraphQL</span>
+            </div>
+          </li>
+          <li data-project="product">
+            <a class="project-row" href="/cases/apple-vegan-cafe/">
+              <div class="project-copy">
                 <h3>Apple Vegan Cafe</h3>
-                <span>01</span>
+                <p>Меню, часы работы и контакты семейного кафе в Паттайе на английском, тайском и русском.</p>
               </div>
-              <p data-i18n="cafeDesc">
-                Многоязычный сайт веганского кафе в Паттайе. Меню и информация
-                для гостей на трёх языках.
-              </p>
-              <div class="tags">
-                <span>Astro</span
-                ><span data-i18n="multilingual">Мультиязычность</span
-                ><span>Cloudflare</span>
-              </div>
-              <a
-                class="project-link"
-                href="https://github.com/kostia7alania/apple-vegan-cafe"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span data-i18n="source">Код проекта</span
-                ><span aria-hidden="true">↗</span
-                ><span class="sr-only" data-i18n="newTab">
-                  — в новой вкладке</span
-                ></a
-              >
-            </div>
-          </article>
-          <article class="project">
-            <a
-              class="project-visual driving"
-              href="https://github.com/kostia7alania/thai-driving-license"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Thai Driving License — код проекта на GitHub"
-              data-i18n-aria="drivingAria"
-              ><span class="visual-label">FIND YOUR WAY.</span>
-              <div class="license-card" aria-hidden="true">
-                <div class="license-top">
-                  <span>THAILAND</span
-                  ><svg viewBox="0 0 34 20">
-                    <path d="M0 0h34v20H0Z" fill="#cf675e" />
-                    <path d="M0 4h34v12H0Z" fill="#f7f2e9" />
-                    <path d="M0 7h34v6H0Z" fill="#465d84" />
-                  </svg>
-                </div>
-                <div class="license-body">
-                  <div class="license-person">
-                    <svg viewBox="0 0 40 50">
-                      <circle cx="20" cy="15" r="9" />
-                      <path d="M4 47V35c0-16 32-16 32 0v12Z" />
-                    </svg>
-                  </div>
-                  <div class="license-lines">
-                    <b>DRIVING LICENSE</b><i></i><i></i
-                    ><span>READY FOR THE ROAD</span>
-                  </div>
-                </div>
-              </div>
-              <span class="road road-one" aria-hidden="true"></span
-              ><span class="road road-two" aria-hidden="true"></span
-              ><span class="visual-footer"
-                ><b>thai driving</b><span>INDEPENDENT GUIDE</span></span
-              ><span class="visual-arrow" aria-hidden="true">↗</span></a
-            >
-            <div class="project-info">
-              <div class="project-title">
+              <span class="project-stack">Astro / Playwright</span>
+              <span class="project-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li data-project="product">
+            <a class="project-row" href="https://thai-driving-license.kostia7alania.workers.dev/">
+              <div class="project-copy">
                 <h3>Thai Driving License</h3>
-                <span>02</span>
+                <p>Независимый гид по получению прав в Таиланде с инструкциями, картой и каталогом отделений DLT.</p>
               </div>
-              <p data-i18n="drivingDesc">
-                Независимый гид по водительским правам в Таиланде: отделения
-                DLT, инструкции и инструменты для записи.
-              </p>
-              <div class="tags">
-                <span data-i18n="directory">Каталог</span
-                ><span data-i18n="webTools">Веб-инструменты</span
-                ><span>DLT</span>
-              </div>
-              <a
-                class="project-link"
-                href="https://github.com/kostia7alania/thai-driving-license"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span data-i18n="source">Код проекта</span
-                ><span aria-hidden="true">↗</span
-                ><span class="sr-only" data-i18n="newTab">
-                  — в новой вкладке</span
-                ></a
-              >
-            </div>
-          </article>
-          <article class="project">
-            <a
-              class="project-visual murmur"
-              href="https://github.com/kostia7alania/openmurmur"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="OpenMurmur — код проекта на GitHub"
-              data-i18n-aria="murmurAria"
-              ><span class="visual-label">KEEP THE THOUGHT.</span>
-              <div class="audio-wave" aria-hidden="true">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
-                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
-                ><i></i><i></i><i></i><i></i><i></i>
-              </div>
-              <div class="audio-caption" aria-hidden="true">
-                <span>VOICE</span
-                ><svg viewBox="0 0 50 16">
-                  <path
-                    d="M0 8h44m-6-6 6 6-6 6"
-                    fill="none"
-                    stroke="currentColor"
-                  /></svg
-                ><span>WORDS</span>
-              </div>
-              <span class="visual-footer"
-                ><b>openmurmur</b><span>LOCAL-FIRST AUDIO JOURNAL</span></span
-              ><span class="visual-arrow" aria-hidden="true">↗</span></a
-            >
-            <div class="project-info">
-              <div class="project-title">
+              <span class="project-stack">Astro / Go</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="product">
+            <a class="project-row" href="https://github.com/kostia7alania/openmurmur">
+              <div class="project-copy">
                 <h3>OpenMurmur</h3>
-                <span>03</span>
+                <p>Аудиодневник с распознаванием речи на устройстве и отправкой материалов в Telegram.</p>
               </div>
-              <p data-i18n="murmurDesc">
-                Аудиодневник для Apple Silicon: запись речи, распознавание на
-                устройстве и отправка материалов в Telegram.
-              </p>
-              <div class="tags">
-                <span>macOS</span><span>On-device AI</span
-                ><span data-i18n="audio">Аудио</span>
+              <span class="project-stack">Apple Silicon / Python</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="tool">
+            <a class="project-row" href="https://github.com/kostia7alania/replylab-extension/releases/tag/v0.4.0">
+              <div class="project-copy">
+                <h3>ReplyLab</h3>
+                <p>Расширение для подготовки черновиков ответов с поддержкой локальной модели.</p>
               </div>
-              <a
-                class="project-link"
-                href="https://github.com/kostia7alania/openmurmur"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><span data-i18n="source">Код проекта</span
-                ><span aria-hidden="true">↗</span
-                ><span class="sr-only" data-i18n="newTab">
-                  — в новой вкладке</span
-                ></a
-              >
-            </div>
-          </article>
-        </div>
-        <a
-          class="all-projects"
-          href="https://github.com/kostia7alania?tab=repositories"
-          target="_blank"
-          rel="noopener noreferrer"
-          ><span data-i18n="allProjects">Остальные проекты и эксперименты</span
-          ><span>GitHub ↗</span></a
-        >
+              <span class="project-stack">Chrome / JavaScript</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="product">
+            <a class="project-row" href="https://fiagdon-arenda.ru/">
+              <div class="project-copy">
+                <h3>Fiagdon Arenda</h3>
+                <p>Статический сайт аренды коттеджей, восстановленный из старой копии.</p>
+              </div>
+              <span class="project-stack">HTML / CSS</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="product">
+            <a class="project-row" href="https://kostia7alania.ru/jardulik-companion/">
+              <div class="project-copy">
+                <h3>Jardulik Companion</h3>
+                <p>Публичный сайт, руководство и API-справка для Telegram-проекта.</p>
+              </div>
+              <span class="project-stack">Go / Telegram</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="product">
+            <a class="project-row" href="https://github.com/kostia7alania/dvachers-travel">
+              <div class="project-copy">
+                <h3>DVACHERS Travel</h3>
+                <p>Открытый справочник с материалами для путешественников по Индонезии.</p>
+              </div>
+              <span class="project-stack">HTML / CSS</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="tool">
+            <a class="project-row" href="https://github.com/kostia7alania/agent-tells">
+              <div class="project-copy">
+                <h3>Agent Tells</h3>
+                <p>Локальная диагностика наблюдаемых сигналов браузерной автоматизации.</p>
+              </div>
+              <span class="project-stack">TypeScript</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="tool">
+            <a class="project-row" href="https://github.com/kostia7alania/vscode-multi-account-manager">
+              <div class="project-copy">
+                <h3>VS Code Multi-Account Manager</h3>
+                <p>Утилита для изолированных профилей VS Code.</p>
+              </div>
+              <span class="project-stack">VS Code</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="tool">
+            <a class="project-row" href="https://github.com/kostia7alania/vue-videojs-thumbnails-progressbar">
+              <div class="project-copy">
+                <h3>Video.js seek previews</h3>
+                <p>Миниатюры кадров при наведении и перемотке на шкале видеоплеера.</p>
+              </div>
+              <span class="project-stack">Vue / Video.js</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="tool">
+            <a class="project-row" href="https://github.com/kostia7alania/photo-editor-uploader-preview-vue">
+              <div class="project-copy">
+                <h3>Photo Editor Uploader</h3>
+                <p>Компонент загрузки изображений с предпросмотром.</p>
+              </div>
+              <span class="project-stack">Vue</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="tool">
+            <a class="project-row" href="https://github.com/kostia7alania/vue-cryptoPro-pdf-sign">
+              <div class="project-copy">
+                <h3>PDF signing in Vue</h3>
+                <p>Пример электронной подписи PDF из веб-интерфейса.</p>
+              </div>
+              <span class="project-stack">Vue / КриптоПро</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="tool">
+            <a class="project-row" href="https://github.com/kostia7alania/vue-2-ui-lib-component-example">
+              <div class="project-copy">
+                <h3>Vue UI library example</h3>
+                <p>Минимальный пример библиотеки компонентов для Vue.</p>
+              </div>
+              <span class="project-stack">Vue 2</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="tool">
+            <a class="project-row" href="https://github.com/kostia7alania/vue-router-with-auth-guards">
+              <div class="project-copy">
+                <h3>Vue Router auth guards</h3>
+                <p>Пример проверки доступа при переходе между маршрутами.</p>
+              </div>
+              <span class="project-stack">Vue Router</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="tool">
+            <a class="project-row" href="https://github.com/kostia7alania/vite-chrome-ext">
+              <div class="project-copy">
+                <h3>Vite Chrome extension</h3>
+                <p>Эксперимент со сборкой расширения Chrome через Vite.</p>
+              </div>
+              <span class="project-stack">Vite / TypeScript</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="lab">
+            <a class="project-row" href="https://github.com/kostia7alania/vue-yandex-maps-api-dostavka">
+              <div class="project-copy">
+                <h3>Калькулятор доставки</h3>
+                <p>Пример расчёта доставки на карте.</p>
+              </div>
+              <span class="project-stack">Vue / Yandex Maps</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="lab">
+            <a class="project-row" href="https://github.com/kostia7alania/laravel-vue-forum">
+              <div class="project-copy">
+                <h3>Laravel Vue Forum</h3>
+                <p>Демо форума с клиентскими маршрутами и состоянием на Vuex.</p>
+              </div>
+              <span class="project-stack">Laravel / Vue 2</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="lab">
+            <a class="project-row" href="https://github.com/kostia7alania/laravel-vue-redis-chartjs-socketio">
+              <div class="project-copy">
+                <h3>Realtime charts</h3>
+                <p>Демо обновления графиков в реальном времени.</p>
+              </div>
+              <span class="project-stack">Laravel / Vue / Socket.IO</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="lab">
+            <a class="project-row" href="https://github.com/kostia7alania/trip-planner-vue">
+              <div class="project-copy">
+                <h3>Trip Planner</h3>
+                <p>Прототип интерфейса планирования поездки.</p>
+              </div>
+              <span class="project-stack">Vue</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="lab">
+            <a class="project-row" href="https://github.com/kostia7alania/Flutter-Courier-App">
+              <div class="project-copy">
+                <h3>Flutter Courier App</h3>
+                <p>Прототип мобильного приложения для курьеров.</p>
+              </div>
+              <span class="project-stack">Flutter</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="lab">
+            <a class="project-row" href="https://github.com/kostia7alania/pwa-test-app">
+              <div class="project-copy">
+                <h3>PWA test app</h3>
+                <p>Тестовая площадка для поведения прогрессивного веб-приложения.</p>
+              </div>
+              <span class="project-stack">HTML / JavaScript</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="lab">
+            <a class="project-row" href="https://github.com/kostia7alania/schengen-visa-checker">
+              <div class="project-copy">
+                <h3>Schengen Visa Checker</h3>
+                <p>Ранний проект проверки готовности заявления.</p>
+              </div>
+              <span class="project-stack">PHP</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="lab">
+            <a class="project-row" href="https://github.com/kostia7alania/vue-web-worker-fibonacci">
+              <div class="project-copy">
+                <h3>Web Workers demo</h3>
+                <p>Пример фоновых вычислений с отображением прогресса.</p>
+              </div>
+              <span class="project-stack">Vue / Web Workers</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="lab">
+            <a class="project-row" href="https://github.com/kostia7alania/buy-crypto-dip-bot">
+              <div class="project-copy">
+                <h3>Buy Crypto Dip Bot</h3>
+                <p>Эксперимент с правилами автоматизации покупок и порогами цены.</p>
+              </div>
+              <span class="project-stack">TypeScript</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li data-project="product">
+            <a class="project-row" href="https://github.com/kostia7alania/kostia7alania.github.io">
+              <div class="project-copy">
+                <h3>Личное портфолио</h3>
+                <p>Этот сайт, его кейсы, каталог и версии на русском и английском.</p>
+              </div>
+              <span class="project-stack">HTML / CSS / JavaScript</span>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        </ul>
       </section>
 
-      <section id="about" class="about-section" aria-labelledby="about-title">
-        <div class="wrap about-grid">
-          <div class="about-heading">
-            <p class="eyebrow" data-i18n="aboutEyebrow">02 / КАК Я РАБОТАЮ</p>
-            <h2 id="about-title">
-              <span data-i18n="aboutTitle1">Не только</span><br /><em
-                data-i18n="aboutTitle2"
-                >пиксели.</em
-              >
-            </h2>
-            <p data-i18n="aboutCopy">
-              Разбираюсь в чужом коде, собираю интерфейсы и автоматизирую
-              повторяющиеся задачи. Люблю, когда сайт быстро загружается, а код
-              можно понять без археологии.
-            </p>
-          </div>
-          <div class="principles">
-            <article>
-              <span>01</span>
-              <div>
-                <h3 data-i18n="p1Title">Сначала — задача</h3>
-                <p data-i18n="p1Copy">
-                  Кому нужен продукт, что мешает сейчас и какой результат
-                  действительно важен.
-                </p>
-              </div>
-            </article>
-            <article>
-              <span>02</span>
-              <div>
-                <h3 data-i18n="p2Title">Понятная основа</h3>
-                <p data-i18n="p2Copy">
-                  Простая структура, переиспользуемые компоненты и проверки там,
-                  где они приносят пользу.
-                </p>
-              </div>
-            </article>
-            <article>
-              <span>03</span>
-              <div>
-                <h3 data-i18n="p3Title">Довести до запуска</h3>
-                <p data-i18n="p3Copy">
-                  Не ограничиваться красивым экраном: проверить сценарии,
-                  мобильную версию и публикацию.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="contact"
-        class="contact wrap"
-        aria-labelledby="contact-title"
-      >
-        <p class="eyebrow" data-i18n="contactEyebrow">
-          03 / ПРОДОЛЖЕНИЕ — В КОДЕ
-        </p>
-        <div class="contact-main">
-          <h2 id="contact-title">
-            <span data-i18n="contactTitle1">Увидимся</span><br /><em
-              data-i18n="contactTitle2"
-              >на GitHub.</em
-            >
-          </h2>
+      <section class="section about" id="about" aria-labelledby="about-title">
+        <div class="wrap about-inner">
+          <h2 id="about-title">Обо мне</h2>
           <div>
-            <p data-i18n="contactCopy">
-              Исходники, новые проекты и всё, что не поместилось на одной
-              странице.
-            </p>
-            <a
-              class="button primary"
-              href="https://github.com/kostia7alania"
-              target="_blank"
-              rel="noopener noreferrer"
-              ><span data-i18n="openProfile">Открыть профиль</span
-              ><span aria-hidden="true">↗</span
-              ><span class="sr-only" data-i18n="newTab">
-                — в новой вкладке</span
-              ></a
-            >
+            <p class="about-lead">Больше восьми лет в коммерческой frontend-разработке.</p>
+            <p>В последних проектах работаю с Vue и TypeScript. Разбираю пользовательский сценарий и API-контракт, собираю компоненты, проверяю основные сценарии и довожу изменения до релиза.</p>
+            <p>В своих проектах делаю статические сайты, интеграции и инструменты на базе локальных моделей. Люблю, когда интерфейс понятен с первого действия, а код можно развивать без лишней сложности.</p>
           </div>
         </div>
       </section>
     </main>
-    <footer class="footer wrap">
-      <a class="brand" href="#"
-        ><span class="brand-icon" aria-hidden="true">k<span>·</span>b</span
-        ><span
-          >Kostia Bazrov
-          <span class="copyright">© <span id="year">2026</span></span></span
-        ></a
-      ><span class="footer-note" data-i18n="footerNote"
-        >Сделано без лишнего.</span
-      ><a href="#main"><span data-i18n="backTop">Наверх</span> ↑</a>
+    <footer id="contact" class="site-footer">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <h2>Обсудим задачу</h2>
+            <p>Разработка интерфейсов, модернизация сайтов и автоматизация.</p>
+          </div>
+          <a class="button button-primary" href="https://t.me/Kostatuktuk">Написать в Telegram <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="footer-bottom">
+          <span>© Костя Базров</span>
+          <nav aria-label="Профили и навигация">
+            <a href="https://github.com/kostia7alania">GitHub</a>
+            <a href="https://www.linkedin.com/in/kostia7alania/">LinkedIn</a>
+            <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
+          </nav>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

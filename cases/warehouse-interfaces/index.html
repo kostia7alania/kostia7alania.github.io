@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>Складские интерфейсы | Костя Базров</title>
+    <meta name="description" content="При повторном сканировании серийного номера или IMEI интерфейс обрабатывает дубль до добавления записи.">
+    <link rel="canonical" href="https://kostia7alania.ru/cases/warehouse-interfaces/">
+    <link rel="alternate" hreflang="ru" href="https://kostia7alania.ru/cases/warehouse-interfaces/">
+    <link rel="alternate" hreflang="en" href="https://kostia7alania.ru/en/cases/warehouse-interfaces/">
+    <link rel="alternate" hreflang="x-default" href="https://kostia7alania.ru/cases/warehouse-interfaces/">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="Складские интерфейсы | Костя Базров">
+    <meta property="og:description" content="При повторном сканировании серийного номера или IMEI интерфейс обрабатывает дубль до добавления записи.">
+    <meta property="og:url" content="https://kostia7alania.ru/cases/warehouse-interfaces/">
+    <meta property="og:image" content="https://kostia7alania.ru/assets/warehouse-social.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script>
+(() => {
+  try {
+    const preference = localStorage.getItem("kostia-theme");
+    if (preference === "light" || preference === "dark") {
+      document.documentElement.dataset.theme = preference;
+      document.querySelector('meta[name="color-scheme"]').content = preference;
+    }
+  } catch {
+    // The system theme also works when local storage is unavailable.
+  }
+})();
+    </script>
+    <link rel="stylesheet" href="/style.css?v=53b050a28227">
+    <script src="/site.js?v=81f14a4cb30b" defer></script>
+  </head>
+  <body id="top">
+    <a class="skip" href="#main">К содержимому</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">kb.</span>
+          <span>Костя Базров</span>
+        </a>
+        <nav class="site-nav" aria-label="Навигация">
+          <a href="/#work">Кейсы</a>
+          <a href="/#projects">Проекты</a>
+          <a href="/#about">Обо мне</a>
+        </nav>
+        <div class="header-controls">
+          <a class="language-link" href="/en/cases/warehouse-interfaces/" lang="en" hreflang="en" aria-label="EN (Read in English)">EN</a>
+          <label class="theme-control" data-theme-control hidden>
+            <span aria-hidden="true">◐</span>
+            <select data-theme-select aria-label="Тема сайта">
+              <option value="system">Авто</option>
+              <option value="dark">Тёмная</option>
+              <option value="light">Светлая</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1" class="wrap case-main">
+      <article class="case-story case-story--warehouse">
+        <a class="text-link case-back" href="/#work"><span aria-hidden="true">←</span> Все кейсы</a>
+        <header class="case-intro">
+          <p class="case-category">Приёмка в WMS</p>
+          <h1>Складские интерфейсы</h1>
+          <p class="case-summary">При повторном сканировании серийного номера или IMEI интерфейс обрабатывает дубль до добавления записи.</p>
+        </header>
+        <dl class="case-facts">
+          <div><dt>Моя роль</dt><dd>Frontend-разработка</dd></div>
+          <div><dt>Технологии</dt><dd>Vue, TypeScript, Vitest</dd></div>
+          <div><dt>Что проверено</dt><dd>Компонентные тесты</dd></div>
+        </dl>
+        <figure class="case-cover">
+          <img src="/assets/warehouse.webp" alt="" width="1240" height="827" fetchpriority="high">
+          <figcaption>Иллюстрация к кейсу</figcaption>
+        </figure>
+        <div class="case-flow">
+          <h2>Как это работает</h2>
+          <ol>
+          <li>Сканирование</li>
+          <li>Проверка идентификатора</li>
+          <li>Следующий товар</li>
+          </ol>
+        </div>
+        <section class="scan-example" aria-labelledby="scan-example-title">
+          <h2 id="scan-example-title">Что видит оператор</h2>
+          <p>Пример с тестовым номером.</p>
+          <div class="scan-states">
+            <div>
+              <h3>Первый скан</h3>
+              <code>SN-DEMO-01</code>
+              <p>Товар добавлен в список.</p>
+            </div>
+            <div>
+              <h3>Повторный скан</h3>
+              <code>SN-DEMO-01</code>
+              <p>Повтор подсвечен. В списке одна запись.</p>
+            </div>
+          </div>
+        </section>
+        <div class="case-narrative">
+          <section><h2>Задача</h2><p>На складе товары сканируют один за другим. Повторное считывание того же кода могло добавить лишнюю строку. Оператору важно быстро увидеть, принят ли ввод, и продолжить работу.</p></section>
+          <section><h2>Мой вклад</h2><p>Доработал обработку серийных номеров и IMEI на фронтенде. При повторном скане интерфейс подсвечивает причину и оставляет в списке одну запись. Компонентными тестами закрепил обычное сканирование и повтор одного кода.</p></section>
+          <section><h2>Результат</h2><p>Повторный ввод больше не создаёт вторую строку в этом сценарии. Тесты позволяют проверить то же поведение при дальнейших изменениях компонента.</p></section>
+        </div>
+      </article>
+      <nav class="case-next" aria-label="Следующий кейс">
+        <a href="/cases/letocosmetics/">
+          <span>Следующий кейс</span>
+          <strong>Letocosmetics</strong>
+          <span class="next-arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
+    </main>
+    <footer id="contact" class="site-footer">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <h2>Обсудим задачу</h2>
+            <p>Разработка интерфейсов, модернизация сайтов и автоматизация.</p>
+          </div>
+          <a class="button button-primary" href="https://t.me/Kostatuktuk">Написать в Telegram <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="footer-bottom">
+          <span>© Костя Базров</span>
+          <nav aria-label="Профили и навигация">
+            <a href="https://github.com/kostia7alania">GitHub</a>
+            <a href="https://www.linkedin.com/in/kostia7alania/">LinkedIn</a>
+            <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

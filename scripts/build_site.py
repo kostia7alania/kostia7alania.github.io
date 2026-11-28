@@ -158,7 +158,12 @@ def project_row(project, lang):
     arrow = ""
     if destination:
         external = destination.startswith("https://")
-        url = destination if external else case_url(destination, lang)
+        if external:
+            url = destination
+        elif destination.startswith("/"):
+            url = home_url(lang) + destination.lstrip("/")
+        else:
+            url = case_url(destination, lang)
         element = "a"
         href = f' href="{escape(url)}"'
         arrow = f'\n              <span class="project-arrow" aria-hidden="true">{"↗" if external else "→"}</span>'
@@ -331,6 +336,60 @@ def render_case(case, next_case, lang):
     )
 
 
+def render_ayugram_sync(lang):
+    def t(ru, en):
+        return localized((ru, en), lang)
+
+    routes = {locale: home_url(locale) + "ayugram-sync/" for locale in LANGUAGES}
+    download = "/ayugram-sync/ayugram-sync-0.1-preview.zip"
+    source = f"{GITHUB}/kostia7alania.github.io/tree/main/ayugram-sync"
+    guide = f"{GITHUB}/kostia7alania.github.io/blob/main/ayugram-sync/README.md"
+    description = t(
+        "Перенеси сохранённые правки и удаления из копии AyuGram Desktop в свой архив. Его можно открыть и на втором компьютере.",
+        "Move saved edits and deletions from an AyuGram Desktop backup to your own archive. You can open it on a second computer.",
+    )
+    body = f'''    <main id="main" tabindex="-1" class="wrap case-main">
+      <article class="case-story">
+        <a class="text-link case-back" href="{home_url(lang)}#projects"><span aria-hidden="true">←</span> {t('Все проекты', 'All projects')}</a>
+        <header class="case-intro">
+          <p class="case-category">{t('Версия 0.1 · превью', 'Version 0.1 · preview')}</p>
+          <h1>AyuGram Sync</h1>
+          <p class="case-summary">{description}</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="{download}" download>{t('Скачать ZIP', 'Download ZIP')}</a>
+            <a class="button button-secondary" href="{guide}" hreflang="ru">{t('Открыть инструкцию', 'Open setup guide (Russian)')}</a>
+          </div>
+        </header>
+        <div class="case-narrative">
+          <section>
+            <h2>{t('Попробовать на примере', 'Try sample data')}</h2>
+            <div>
+              <p>{t('Распакуй ZIP, открой терминал в этой папке и запусти проверку. Нужен Python 3.9 или новее.', 'Unzip the download, open a terminal in its folder and run the check. You need Python 3.9 or newer.')}</p>
+              <p>macOS / Linux<br><code>python3 -B test_roundtrip.py -v</code></p>
+              <p>Windows PowerShell<br><code>py -3 -B test_roundtrip.py -v</code></p>
+              <p>{t('Пример создаст тестовую правку и удаление, передаст их двум архивам и выведет OK.', 'The demo generates a sample edit and deletion, sends both to two archives and prints OK.')}</p>
+            </div>
+          </section>
+          <section>
+            <h2>{t('Что умеет превью', 'What the preview supports')}</h2>
+            <p>{t('Можно посмотреть, по каким личным чатам есть записи, вручную импортировать один чат и открыть его сохранённый текст. Архив запускается на своём компьютере. Фоновый сбор, Android и вложения пока не поддерживаются.', 'List private chats with saved records, import one chat at a time and read its saved text. The archive runs on your own computer. Background capture, Android and attachments are outside this preview.')}</p>
+          </section>
+          <section>
+            <h2>{t('Фикс ленты Desktop', 'Desktop chat history fix')}</h2>
+            <div>
+              <p>{t('Отдельный патч возвращает сохранённый удалённый текст в обычную ленту личного чата. Патч проверен на macOS arm64. Статус выпуска указан в PR.', 'A separate patch restores saved deleted text to the regular private chat history. It was tested on macOS arm64. See the PR for release status.')}</p>
+              <p><a class="text-link" href="https://github.com/AyuGram/AyuGramDesktop/pull/530">{t('Патч в AyuGram Desktop #530', 'AyuGram Desktop patch #530')}</a></p>
+            </div>
+          </section>
+          <div class="case-links">
+            <a class="button button-secondary" href="{source}">{t('Исходники и проверка', 'Source and test')} <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+    </main>'''
+    return layout(lang, routes, "AyuGram Sync | " + t("Костя Базров", "Kostia Bazrov"), description, body)
+
+
 def render_not_found():
     body = '''    <main id="main" tabindex="-1" class="wrap not-found">
       <p class="hero-role">404</p>
@@ -351,6 +410,9 @@ def render_files():
         home = home_url(lang)
         pages[home.lstrip("/") + "index.html"] = render_home(lang)
         urls.append(home)
+        sync = home + "ayugram-sync/"
+        pages[sync.lstrip("/") + "index.html"] = render_ayugram_sync(lang)
+        urls.append(sync)
         for index, case in enumerate(CASES):
             url = case_url(case["slug"], lang)
             pages[url.lstrip("/") + "index.html"] = render_case(case, CASES[(index + 1) % len(CASES)], lang)

@@ -117,7 +117,7 @@ CATEGORIES = {
     "lab": ("Эксперименты", "Experiments"),
 }
 
-# Name, category, destination, stack, short description. Case slugs resolve per language.
+# Name, category, destination, stack, short description. Case slugs and site paths resolve per language.
 PROJECTS = [
     (CASES[0]["name"], "work", "warehouse-interfaces", "Vue / TypeScript", CASES[0]["summary"]),
     ("Letocosmetics", "work", "letocosmetics", "Astro / Payload", CASES[1]["summary"]),
@@ -143,6 +143,9 @@ PROJECTS = [
     ("OpenMurmur", "product", f"{GITHUB}/openmurmur", "Apple Silicon / Python",
      ("Аудиодневник с распознаванием речи на устройстве и отправкой материалов в Telegram.",
       "Audio journal with on-device speech recognition and optional Telegram delivery.")),
+    ("AyuGram Sync", "tool", "/ayugram-sync/", "Python / SQLite",
+     ("Превью архива сохранённых правок и удалений из AyuGram Desktop. ZIP и инструкция.",
+      "Preview of an archive for edits and deletions saved by AyuGram Desktop. Includes a ZIP and setup guide.")),
     ("ReplyLab", "tool", f"{GITHUB}/replylab-extension/releases/tag/v0.4.0", "Chrome / JavaScript",
      ("Расширение для подготовки черновиков ответов с поддержкой локальной модели.",
       "Browser extension for drafting replies, with support for a local model.")),

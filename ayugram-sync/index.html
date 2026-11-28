@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>AyuGram Sync | Костя Базров</title>
+    <meta name="description" content="Перенеси сохранённые правки и удаления из копии AyuGram Desktop в свой архив. Его можно открыть и на втором компьютере.">
+    <link rel="canonical" href="https://kostia7alania.ru/ayugram-sync/">
+    <link rel="alternate" hreflang="ru" href="https://kostia7alania.ru/ayugram-sync/">
+    <link rel="alternate" hreflang="en" href="https://kostia7alania.ru/en/ayugram-sync/">
+    <link rel="alternate" hreflang="x-default" href="https://kostia7alania.ru/ayugram-sync/">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="AyuGram Sync | Костя Базров">
+    <meta property="og:description" content="Перенеси сохранённые правки и удаления из копии AyuGram Desktop в свой архив. Его можно открыть и на втором компьютере.">
+    <meta property="og:url" content="https://kostia7alania.ru/ayugram-sync/">
+    <meta property="og:image" content="https://kostia7alania.ru/assets/portfolio-social.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script>
+(() => {
+  try {
+    const preference = localStorage.getItem("kostia-theme");
+    if (preference === "light" || preference === "dark") {
+      document.documentElement.dataset.theme = preference;
+      document.querySelector('meta[name="color-scheme"]').content = preference;
+    }
+  } catch {
+    // The system theme also works when local storage is unavailable.
+  }
+})();
+    </script>
+    <link rel="stylesheet" href="/style.css?v=53b050a28227">
+    <script src="/site.js?v=81f14a4cb30b" defer></script>
+  </head>
+  <body id="top">
+    <a class="skip" href="#main">К содержимому</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">kb.</span>
+          <span>Костя Базров</span>
+        </a>
+        <nav class="site-nav" aria-label="Навигация">
+          <a href="/#work">Кейсы</a>
+          <a href="/#projects">Проекты</a>
+          <a href="/#about">Обо мне</a>
+        </nav>
+        <div class="header-controls">
+          <a class="language-link" href="/en/ayugram-sync/" lang="en" hreflang="en" aria-label="EN (Read in English)">EN</a>
+          <label class="theme-control" data-theme-control hidden>
+            <span aria-hidden="true">◐</span>
+            <select data-theme-select aria-label="Тема сайта">
+              <option value="system">Авто</option>
+              <option value="dark">Тёмная</option>
+              <option value="light">Светлая</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1" class="wrap case-main">
+      <article class="case-story">
+        <a class="text-link case-back" href="/#projects"><span aria-hidden="true">←</span> Все проекты</a>
+        <header class="case-intro">
+          <p class="case-category">Версия 0.1 · превью</p>
+          <h1>AyuGram Sync</h1>
+          <p class="case-summary">Перенеси сохранённые правки и удаления из копии AyuGram Desktop в свой архив. Его можно открыть и на втором компьютере.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="/ayugram-sync/ayugram-sync-0.1-preview.zip" download>Скачать ZIP</a>
+            <a class="button button-secondary" href="https://github.com/kostia7alania/kostia7alania.github.io/blob/main/ayugram-sync/README.md" hreflang="ru">Открыть инструкцию</a>
+          </div>
+        </header>
+        <div class="case-narrative">
+          <section>
+            <h2>Попробовать на примере</h2>
+            <div>
+              <p>Распакуй ZIP, открой терминал в этой папке и запусти проверку. Нужен Python 3.9 или новее.</p>
+              <p>macOS / Linux<br><code>python3 -B test_roundtrip.py -v</code></p>
+              <p>Windows PowerShell<br><code>py -3 -B test_roundtrip.py -v</code></p>
+              <p>Пример создаст тестовую правку и удаление, передаст их двум архивам и выведет OK.</p>
+            </div>
+          </section>
+          <section>
+            <h2>Что умеет превью</h2>
+            <p>Можно посмотреть, по каким личным чатам есть записи, вручную импортировать один чат и открыть его сохранённый текст. Архив запускается на своём компьютере. Фоновый сбор, Android и вложения пока не поддерживаются.</p>
+          </section>
+          <section>
+            <h2>Фикс ленты Desktop</h2>
+            <div>
+              <p>Отдельный патч возвращает сохранённый удалённый текст в обычную ленту личного чата. Патч проверен на macOS arm64. Статус выпуска указан в PR.</p>
+              <p><a class="text-link" href="https://github.com/AyuGram/AyuGramDesktop/pull/530">Патч в AyuGram Desktop #530</a></p>
+            </div>
+          </section>
+          <div class="case-links">
+            <a class="button button-secondary" href="https://github.com/kostia7alania/kostia7alania.github.io/tree/main/ayugram-sync">Исходники и проверка <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+    </main>
+    <footer id="contact" class="site-footer">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <h2>Обсудим задачу</h2>
+            <p>Разработка интерфейсов, модернизация сайтов и автоматизация.</p>
+          </div>
+          <a class="button button-primary" href="https://t.me/Kostatuktuk">Написать в Telegram <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="footer-bottom">
+          <span>© Костя Базров</span>
+          <nav aria-label="Профили и навигация">
+            <a href="https://github.com/kostia7alania">GitHub</a>
+            <a href="https://www.linkedin.com/in/kostia7alania/">LinkedIn</a>
+            <a href="#top">Наверх <span aria-hidden="true">↑</span></a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

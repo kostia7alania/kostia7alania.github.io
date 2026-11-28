@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark light">
-    <title>AyuGram Sync | Kostia Bazrov</title>
-    <meta name="description" content="Move saved edits and deletions from an AyuGram Desktop backup to your own archive. You can open it on a second computer.">
+    <title>AyuGram Sync | Take your saved deleted messages to a new computer</title>
+    <meta name="description" content="Telegram loads your current chats on the new PC. The deleted messages and earlier versions AyuGram saved stay on the old one. AyuGram Sync moves them into a separate archive.">
     <link rel="canonical" href="https://kostia7alania.ru/en/ayugram-sync/">
     <link rel="alternate" hreflang="ru" href="https://kostia7alania.ru/ayugram-sync/">
     <link rel="alternate" hreflang="en" href="https://kostia7alania.ru/en/ayugram-sync/">
     <link rel="alternate" hreflang="x-default" href="https://kostia7alania.ru/ayugram-sync/">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="en_US">
-    <meta property="og:title" content="AyuGram Sync | Kostia Bazrov">
-    <meta property="og:description" content="Move saved edits and deletions from an AyuGram Desktop backup to your own archive. You can open it on a second computer.">
+    <meta property="og:title" content="AyuGram Sync | Take your saved deleted messages to a new computer">
+    <meta property="og:description" content="Telegram loads your current chats on the new PC. The deleted messages and earlier versions AyuGram saved stay on the old one. AyuGram Sync moves them into a separate archive.">
     <meta property="og:url" content="https://kostia7alania.ru/en/ayugram-sync/">
     <meta property="og:image" content="https://kostia7alania.ru/assets/portfolio-social.jpg">
     <meta name="twitter:card" content="summary_large_image">
@@ -33,6 +33,8 @@
     </script>
     <link rel="stylesheet" href="/style.css?v=53b050a28227">
     <script src="/site.js?v=81f14a4cb30b" defer></script>
+    <link rel="stylesheet" href="/ayugram-sync/preview.css?v=a93da9ed8d5e">
+    <script src="/ayugram-sync/preview.js?v=12eb68ad6f10" defer></script>
   </head>
   <body id="top">
     <a class="skip" href="#main">Skip to content</a>
@@ -60,44 +62,79 @@
         </div>
       </div>
     </header>
-    <main id="main" tabindex="-1" class="wrap case-main">
-      <article class="case-story">
-        <a class="text-link case-back" href="/en/#projects"><span aria-hidden="true">←</span> All projects</a>
-        <header class="case-intro">
-          <p class="case-category">Version 0.1 · preview</p>
-          <h1>AyuGram Sync</h1>
-          <p class="case-summary">Move saved edits and deletions from an AyuGram Desktop backup to your own archive. You can open it on a second computer.</p>
+    <main id="main" tabindex="-1" class="wrap sync-main">
+      <section class="sync-hero" aria-labelledby="sync-title">
+        <div>
+          <p class="sync-product">AyuGram Sync <span>Preview 0.1</span></p>
+          <h1 id="sync-title">Take your saved deleted messages to a new computer</h1>
+          <p class="sync-lead">Telegram loads your current chats on the new PC. The deleted messages and earlier versions AyuGram saved stay on the old one. AyuGram Sync moves them into a separate archive.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="/ayugram-sync/ayugram-sync-0.1-preview.zip" download>Download ZIP</a>
-            <a class="button button-secondary" href="https://github.com/kostia7alania/kostia7alania.github.io/blob/main/ayugram-sync/README.md" hreflang="ru">Open setup guide (Russian)</a>
+            <a class="button button-secondary" href="#quickstart">Quick start</a>
           </div>
-        </header>
-        <div class="case-narrative">
-          <section>
-            <h2>Try sample data</h2>
-            <div>
-              <p>Unzip the download, open a terminal in its folder and run the check. You need Python 3.9 or newer.</p>
-              <p>macOS / Linux<br><code>python3 -B test_roundtrip.py -v</code></p>
-              <p>Windows PowerShell<br><code>py -3 -B test_roundtrip.py -v</code></p>
-              <p>The demo generates a sample edit and deletion, sends both to two archives and prints OK.</p>
-            </div>
-          </section>
-          <section>
-            <h2>What the preview supports</h2>
-            <p>List private chats with saved records, import one chat at a time and read its saved text. The archive runs on your own computer. Background capture, Android and attachments are outside this preview.</p>
-          </section>
-          <section>
-            <h2>Desktop chat history fix</h2>
-            <div>
-              <p>A separate patch restores saved deleted text to the regular private chat history. It was tested on macOS arm64. See the PR for release status.</p>
-              <p><a class="text-link" href="https://github.com/AyuGram/AyuGramDesktop/pull/530">AyuGram Desktop patch #530</a></p>
-            </div>
-          </section>
-          <div class="case-links">
-            <a class="button button-secondary" href="https://github.com/kostia7alania/kostia7alania.github.io/tree/main/ayugram-sync">Source and test <span aria-hidden="true">↗</span></a>
-          </div>
+          <p class="sync-scope">Manual transfer of private chat text.</p>
         </div>
-      </article>
+        <figure class="sync-example">
+          <figcaption>
+            <strong>What the archive keeps</strong>
+            <p>In this example, someone changed the meeting time, then deleted the message.</p>
+          </figcaption>
+          <dl class="sync-versions">
+            <div><dt>Before editing</dt><dd>Let’s meet at 6:00 pm.</dd></div>
+            <div><dt>Before deletion</dt><dd>Let’s meet at 8:00 pm.</dd></div>
+          </dl>
+          <p class="sync-example-note">The archive contains the records AyuGram managed to save.</p>
+        </figure>
+      </section>
+      <section id="quickstart" class="sync-quickstart" aria-labelledby="sync-quickstart-title">
+        <div>
+          <h2 id="sync-quickstart-title">Try it without your own chats</h2>
+          <ol class="sync-steps">
+            <li>Unzip the download.</li>
+            <li>Open a terminal in the extracted folder. You need <a class="text-link" href="https://www.python.org/downloads/">Python 3.9+</a>.</li>
+            <li>Run the command for your system. The test transfers a sample edit and deletion and prints <code>OK</code>.</li>
+          </ol>
+        </div>
+        <div class="sync-commands">
+          <figure class="sync-code">
+            <figcaption>
+              <span>macOS / Linux</span>
+              <span class="sync-copy">
+                <button class="sync-copy-button" type="button" command="--copy-snippet" commandfor="sync-code-unix" aria-label="Copy command for macOS / Linux" hidden>Copy</button>
+                <span class="sync-copy-status" role="status"></span>
+              </span>
+            </figcaption>
+            <pre><code id="sync-code-unix"><span class="sync-program">python3</span> <span class="sync-flag">-B</span> test_roundtrip.py <span class="sync-flag">-v</span></code></pre>
+          </figure>
+          <figure class="sync-code">
+            <figcaption>
+              <span>Windows PowerShell</span>
+              <span class="sync-copy">
+                <button class="sync-copy-button" type="button" command="--copy-snippet" commandfor="sync-code-windows" aria-label="Copy command for Windows PowerShell" hidden>Copy</button>
+                <span class="sync-copy-status" role="status"></span>
+              </span>
+            </figcaption>
+            <pre><code id="sync-code-windows"><span class="sync-program">py</span> <span class="sync-flag">-3 -B</span> test_roundtrip.py <span class="sync-flag">-v</span></code></pre>
+          </figure>
+        </div>
+      </section>
+      <div class="sync-details">
+        <section>
+          <h2>Transfer your own chat</h2>
+          <p>Quit AyuGram Desktop, copy its database and choose one private chat. Import its records into your archive and open them on a second PC. This preview transfers text from Desktop manually.</p>
+          <div class="sync-doc-links">
+            <a class="text-link" href="https://github.com/kostia7alania/kostia7alania.github.io/blob/main/ayugram-sync/README.md" hreflang="ru">Transfer guide (Russian)</a>
+            <a class="text-link" href="https://github.com/kostia7alania/kostia7alania.github.io/tree/main/ayugram-sync">Source code</a>
+          </div>
+        </section>
+        <section>
+          <h2>Deleted messages in the chat timeline</h2>
+          <p>A separate Desktop patch shows the saved deleted text in the chat timeline. It was tested on macOS arm64.</p>
+          <div class="sync-doc-links">
+            <a class="text-link" href="https://github.com/AyuGram/AyuGramDesktop/pull/530">Desktop patch #530</a>
+          </div>
+        </section>
+      </div>
     </main>
     <footer id="contact" class="site-footer">
       <div class="wrap">

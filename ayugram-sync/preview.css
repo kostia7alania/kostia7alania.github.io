@@ -1,0 +1,253 @@
+.sync-main {
+  padding-block: clamp(2.25rem, 6vw, 5rem) clamp(3rem, 7vw, 6rem);
+}
+
+.sync-hero,
+.sync-quickstart,
+.sync-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+}
+
+.sync-hero {
+  align-items: center;
+}
+
+.sync-product {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .25rem .85rem;
+  font-weight: 720;
+}
+
+.sync-product span {
+  color: var(--muted);
+  font-size: .86rem;
+  font-weight: 530;
+}
+
+.sync-hero h1 {
+  margin-block: .85rem 1.15rem;
+  font-size: clamp(2.18rem, 4.65vw, 4.65rem);
+  font-weight: 770;
+  letter-spacing: -.043em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.sync-lead {
+  max-width: 53ch;
+  color: var(--muted);
+  font-size: clamp(1.06rem, 1.6vw, 1.26rem);
+}
+
+.sync-scope {
+  margin-top: .8rem;
+  color: var(--muted);
+  font-size: .89rem;
+}
+
+.sync-example {
+  padding: clamp(1rem, 2.5vw, 1.65rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.sync-example figcaption strong {
+  display: block;
+  margin-bottom: .25rem;
+  font-size: 1.12rem;
+}
+
+.sync-example figcaption p,
+.sync-example-note {
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.sync-versions {
+  display: grid;
+  gap: .65rem;
+  margin-block: 1.05rem;
+}
+
+.sync-versions > div {
+  padding: .75rem 1rem;
+  border-inline-start: .18rem solid var(--version-color);
+  border-radius: .4rem;
+  background: var(--hover);
+}
+
+.sync-versions > div:first-child {
+  --version-color: var(--cafe);
+}
+
+.sync-versions > div:last-child {
+  --version-color: var(--warehouse);
+}
+
+.sync-versions dt {
+  color: var(--version-color);
+  font-size: .83rem;
+  font-weight: 690;
+}
+
+.sync-versions dd {
+  margin-top: .25rem;
+  font-size: 1.12rem;
+}
+
+.sync-quickstart,
+.sync-details {
+  margin-top: clamp(2.4rem, 6vw, 4.75rem);
+  padding-top: clamp(1.65rem, 4vw, 3rem);
+  border-top: 1px solid var(--line);
+}
+
+.sync-main h2 {
+  font-size: clamp(1.65rem, 3vw, 2.65rem);
+  letter-spacing: -.037em;
+}
+
+.sync-steps {
+  display: grid;
+  gap: .7rem;
+  max-width: 52ch;
+  margin: 1.1rem 0 0;
+  padding-inline-start: 1.3rem;
+  color: var(--muted);
+}
+
+.sync-steps li::marker {
+  color: var(--ink);
+  font-weight: 710;
+}
+
+.sync-commands {
+  display: grid;
+  align-content: start;
+  gap: .8rem;
+  min-width: 0;
+}
+
+.sync-code {
+  color-scheme: dark;
+  border: 1px solid #495766;
+  border-radius: .65rem;
+  background: #101723;
+  color: #f3f5f8;
+}
+
+.sync-code figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  min-height: 3rem;
+  padding: .4rem .85rem;
+  border-bottom: 1px solid #394757;
+  border-radius: .6rem .6rem 0 0;
+  background: #222d3b;
+  font-size: .9rem;
+  font-weight: 650;
+}
+
+.sync-code pre {
+  margin: 0;
+  padding: 1rem .85rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: .97rem/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.sync-program {
+  color: #a5e5cc;
+}
+
+.sync-flag {
+  color: #dbccff;
+}
+
+.sync-copy {
+  position: relative;
+  margin-inline-start: auto;
+}
+
+.sync-copy-button {
+  min-height: 2.35rem;
+  padding: .25rem .65rem;
+  border: 1px solid #647386;
+  border-radius: .35rem;
+  background: #182130;
+  color: #f3f5f8;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: .84rem;
+  font-weight: 640;
+}
+
+.sync-copy-button:hover {
+  background: #304052;
+}
+
+.sync-copy-button:focus-visible {
+  outline-color: #e5f5b8;
+}
+
+.sync-copy-status {
+  position: absolute;
+  z-index: 1;
+  inset-inline-end: 0;
+  inset-block-start: calc(100% + .25rem);
+  width: max-content;
+  max-width: 11rem;
+  padding: .35rem .55rem;
+  border: 1px solid #647386;
+  border-radius: .35rem;
+  background: #222d3b;
+  pointer-events: none;
+  font-size: .8rem;
+}
+
+.sync-copy-status:empty {
+  opacity: 0;
+}
+
+.sync-details h2 {
+  margin-bottom: .75rem;
+  font-size: clamp(1.32rem, 2.4vw, 1.9rem);
+}
+
+.sync-details p {
+  max-width: 58ch;
+  color: var(--muted);
+}
+
+.sync-doc-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem 1.25rem;
+  margin-top: .75rem;
+}
+
+@media (max-width: 780px) {
+  .sync-hero,
+  .sync-quickstart,
+  .sync-details {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sync-hero h1 {
+    font-size: clamp(2.08rem, 8.2vw, 3.4rem);
+  }
+}
+
+@media (pointer: coarse) {
+  .sync-copy-button {
+    min-height: 2.75rem;
+  }
+}

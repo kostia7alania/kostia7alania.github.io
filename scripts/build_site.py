@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LANGUAGES = ("ru", "en")
 ASSETS = {
     file: f"/{file}?v={sha256((ROOT / file).read_bytes()).hexdigest()[:12]}"
-    for file in ("style.css", "site.js")
+    for file in ("style.css", "site.js", "ayugram-sync/preview.css", "ayugram-sync/preview.js")
 }
 THEME_BOOTSTRAP = (ROOT / "theme.js").read_text(encoding="utf-8").rstrip()
 
@@ -33,7 +33,7 @@ def case_url(slug, lang):
     return f"{home_url(lang)}cases/{slug}/"
 
 
-def layout(lang, routes, title, description, body, *, home=False, image="assets/portfolio-social.jpg"):
+def layout(lang, routes, title, description, body, *, home=False, image="assets/portfolio-social.jpg", extra_head=""):
     def t(ru, en):
         return localized((ru, en), lang)
 
@@ -81,7 +81,7 @@ def layout(lang, routes, title, description, body, *, home=False, image="assets/
 {THEME_BOOTSTRAP}
     </script>
     <link rel="stylesheet" href="{ASSETS['style.css']}">
-    <script src="{ASSETS['site.js']}" defer></script>{schema}
+    <script src="{ASSETS['site.js']}" defer></script>{schema}{extra_head}
   </head>
   <body id="top">
     <a class="skip" href="#main">{t('К содержимому', 'Skip to content')}</a>
@@ -344,50 +344,90 @@ def render_ayugram_sync(lang):
     download = "/ayugram-sync/ayugram-sync-0.1-preview.zip"
     source = f"{GITHUB}/kostia7alania.github.io/tree/main/ayugram-sync"
     guide = f"{GITHUB}/kostia7alania.github.io/blob/main/ayugram-sync/README.md"
-    description = t(
-        "Перенеси сохранённые правки и удаления из копии AyuGram Desktop в свой архив. Его можно открыть и на втором компьютере.",
-        "Move saved edits and deletions from an AyuGram Desktop backup to your own archive. You can open it on a second computer.",
+    headline = t(
+        "Забери удалённые сообщения на новый компьютер",
+        "Take your saved deleted messages to a new computer",
     )
-    body = f'''    <main id="main" tabindex="-1" class="wrap case-main">
-      <article class="case-story">
-        <a class="text-link case-back" href="{home_url(lang)}#projects"><span aria-hidden="true">←</span> {t('Все проекты', 'All projects')}</a>
-        <header class="case-intro">
-          <p class="case-category">{t('Версия 0.1 · превью', 'Version 0.1 · preview')}</p>
-          <h1>AyuGram Sync</h1>
-          <p class="case-summary">{description}</p>
+    description = t(
+        "Telegram загрузит текущие чаты на новом ПК. Удаления и текст до правок, которые сохранил AyuGram, остались на старом. AyuGram Sync перенесёт их в отдельный архив.",
+        "Telegram loads your current chats on the new PC. The deleted messages and earlier versions AyuGram saved stay on the old one. AyuGram Sync moves them into a separate archive.",
+    )
+    commands = (
+        ("unix", "macOS / Linux", '<span class="sync-program">python3</span> <span class="sync-flag">-B</span> test_roundtrip.py <span class="sync-flag">-v</span>'),
+        ("windows", "Windows PowerShell", '<span class="sync-program">py</span> <span class="sync-flag">-3 -B</span> test_roundtrip.py <span class="sync-flag">-v</span>'),
+    )
+    snippets = "\n".join(
+        f'''          <figure class="sync-code">
+            <figcaption>
+              <span>{platform}</span>
+              <span class="sync-copy">
+                <button class="sync-copy-button" type="button" command="--copy-snippet" commandfor="sync-code-{name}" aria-label="{t('Копировать команду для', 'Copy command for')} {platform}" hidden>{t('Копировать', 'Copy')}</button>
+                <span class="sync-copy-status" role="status"></span>
+              </span>
+            </figcaption>
+            <pre><code id="sync-code-{name}">{command}</code></pre>
+          </figure>'''
+        for name, platform, command in commands
+    )
+    body = f'''    <main id="main" tabindex="-1" class="wrap sync-main">
+      <section class="sync-hero" aria-labelledby="sync-title">
+        <div>
+          <p class="sync-product">AyuGram Sync <span>{t('Превью 0.1', 'Preview 0.1')}</span></p>
+          <h1 id="sync-title">{headline}</h1>
+          <p class="sync-lead">{description}</p>
           <div class="hero-actions">
             <a class="button button-primary" href="{download}" download>{t('Скачать ZIP', 'Download ZIP')}</a>
-            <a class="button button-secondary" href="{guide}" hreflang="ru">{t('Открыть инструкцию', 'Open setup guide (Russian)')}</a>
+            <a class="button button-secondary" href="#quickstart">{t('Как запустить', 'Quick start')}</a>
           </div>
-        </header>
-        <div class="case-narrative">
-          <section>
-            <h2>{t('Попробовать на примере', 'Try sample data')}</h2>
-            <div>
-              <p>{t('Распакуй ZIP, открой терминал в этой папке и запусти проверку. Нужен Python 3.9 или новее.', 'Unzip the download, open a terminal in its folder and run the check. You need Python 3.9 or newer.')}</p>
-              <p>macOS / Linux<br><code>python3 -B test_roundtrip.py -v</code></p>
-              <p>Windows PowerShell<br><code>py -3 -B test_roundtrip.py -v</code></p>
-              <p>{t('Пример создаст тестовую правку и удаление, передаст их двум архивам и выведет OK.', 'The demo generates a sample edit and deletion, sends both to two archives and prints OK.')}</p>
-            </div>
-          </section>
-          <section>
-            <h2>{t('Что умеет превью', 'What the preview supports')}</h2>
-            <p>{t('Можно посмотреть, по каким личным чатам есть записи, вручную импортировать один чат и открыть его сохранённый текст. Архив запускается на своём компьютере. Фоновый сбор, Android и вложения пока не поддерживаются.', 'List private chats with saved records, import one chat at a time and read its saved text. The archive runs on your own computer. Background capture, Android and attachments are outside this preview.')}</p>
-          </section>
-          <section>
-            <h2>{t('Фикс ленты Desktop', 'Desktop chat history fix')}</h2>
-            <div>
-              <p>{t('Отдельный патч возвращает сохранённый удалённый текст в обычную ленту личного чата. Патч проверен на macOS arm64. Статус выпуска указан в PR.', 'A separate patch restores saved deleted text to the regular private chat history. It was tested on macOS arm64. See the PR for release status.')}</p>
-              <p><a class="text-link" href="https://github.com/AyuGram/AyuGramDesktop/pull/530">{t('Патч в AyuGram Desktop #530', 'AyuGram Desktop patch #530')}</a></p>
-            </div>
-          </section>
-          <div class="case-links">
-            <a class="button button-secondary" href="{source}">{t('Исходники и проверка', 'Source and test')} <span aria-hidden="true">↗</span></a>
-          </div>
+          <p class="sync-scope">{t('Ручной перенос текста личных чатов.', 'Manual transfer of private chat text.')}</p>
         </div>
-      </article>
+        <figure class="sync-example">
+          <figcaption>
+            <strong>{t('Что осталось в архиве', 'What the archive keeps')}</strong>
+            <p>{t('В примере собеседник поменял время встречи, потом удалил сообщение.', 'In this example, someone changed the meeting time, then deleted the message.')}</p>
+          </figcaption>
+          <dl class="sync-versions">
+            <div><dt>{t('До правки', 'Before editing')}</dt><dd>{t('Встречаемся в 18:00.', 'Let’s meet at 6:00 pm.')}</dd></div>
+            <div><dt>{t('Перед удалением', 'Before deletion')}</dt><dd>{t('Встречаемся в 20:00.', 'Let’s meet at 8:00 pm.')}</dd></div>
+          </dl>
+          <p class="sync-example-note">{t('В архив попадёт то, что AyuGram успел сохранить.', 'The archive contains the records AyuGram managed to save.')}</p>
+        </figure>
+      </section>
+      <section id="quickstart" class="sync-quickstart" aria-labelledby="sync-quickstart-title">
+        <div>
+          <h2 id="sync-quickstart-title">{t('Попробуй без своей переписки', 'Try it without your own chats')}</h2>
+          <ol class="sync-steps">
+            <li>{t('Распакуй скачанный ZIP.', 'Unzip the download.')}</li>
+            <li>{t('Открой терминал в распакованной папке. Нужен', 'Open a terminal in the extracted folder. You need')} <a class="text-link" href="https://www.python.org/downloads/">Python 3.9+</a>.</li>
+            <li>{t('Запусти команду для своей системы. Тест перенесёт вымышленную правку и удаление и выдаст', 'Run the command for your system. The test transfers a sample edit and deletion and prints')} <code>OK</code>.</li>
+          </ol>
+        </div>
+        <div class="sync-commands">
+{snippets}
+        </div>
+      </section>
+      <div class="sync-details">
+        <section>
+          <h2>{t('Перенести свой чат', 'Transfer your own chat')}</h2>
+          <p>{t('Закрой AyuGram Desktop, сделай копию его базы и выбери один личный чат. Импортируй его записи в свой архив и открой их на втором ПК. В превью этот перенос запускается вручную и работает с текстом из Desktop.', 'Quit AyuGram Desktop, copy its database and choose one private chat. Import its records into your archive and open them on a second PC. This preview transfers text from Desktop manually.')}</p>
+          <div class="sync-doc-links">
+            <a class="text-link" href="{guide}" hreflang="ru">{t('Инструкция по переносу', 'Transfer guide (Russian)')}</a>
+            <a class="text-link" href="{source}">{t('Исходники', 'Source code')}</a>
+          </div>
+        </section>
+        <section>
+          <h2>{t('Удалёнки в ленте AyuGram', 'Deleted messages in the chat timeline')}</h2>
+          <p>{t('За отображение сохранённого текста в самой ленте отвечает отдельный патч Desktop. Его проверяли на macOS arm64.', 'A separate Desktop patch shows the saved deleted text in the chat timeline. It was tested on macOS arm64.')}</p>
+          <div class="sync-doc-links">
+            <a class="text-link" href="https://github.com/AyuGram/AyuGramDesktop/pull/530">{t('Патч Desktop #530', 'Desktop patch #530')}</a>
+          </div>
+        </section>
+      </div>
     </main>'''
-    return layout(lang, routes, "AyuGram Sync | " + t("Костя Базров", "Kostia Bazrov"), description, body)
+    head = f'''
+    <link rel="stylesheet" href="{ASSETS['ayugram-sync/preview.css']}">
+    <script src="{ASSETS['ayugram-sync/preview.js']}" defer></script>'''
+    return layout(lang, routes, f"AyuGram Sync | {headline}", description, body, extra_head=head)
 
 
 def render_not_found():
